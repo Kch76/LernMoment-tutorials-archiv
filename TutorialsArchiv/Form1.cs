@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,12 @@ namespace TutorialsArchiv
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            string entry = $"{titelTextBox.Text}, {urlTextBox.Text}";
+            File.AppendAllText("file-database.csv", entry);
         }
     }
 }

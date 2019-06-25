@@ -75,6 +75,7 @@
             this.saveButton.TabIndex = 4;
             this.saveButton.Text = "Speichern";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // Form1
             // 
