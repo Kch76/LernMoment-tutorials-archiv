@@ -13,23 +13,25 @@ namespace TutorialsArchiv
 {
     public partial class MainForm : Form
     {
+        private FileDatabase _db = null;
+
         public MainForm()
         {
             InitializeComponent();
+            _db = new FileDatabase("file-database.csv");
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
             string entry = $"{titelTextBox.Text}, {urlTextBox.Text}";
-            File.AppendAllText("file-database.csv", entry);
+            _db.Save(entry);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if (File.Exists("file-database.csv"))
+            string firstEntry = _db.LoadFirstEntry();
+            if (firstEntry != string.Empty)
             {
-                IEnumerable<string> entries = File.ReadLines("file-database.csv");
-                string firstEntry = entries.First();
                 string[] elementsOfFirstEntry = firstEntry.Split(',');
 
                 titelTextBox.Text = elementsOfFirstEntry[0];
