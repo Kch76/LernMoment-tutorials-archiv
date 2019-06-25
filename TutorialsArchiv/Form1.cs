@@ -23,5 +23,18 @@ namespace TutorialsArchiv
             string entry = $"{titelTextBox.Text}, {urlTextBox.Text}";
             File.AppendAllText("file-database.csv", entry);
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            if (File.Exists("file-database.csv"))
+            {
+                IEnumerable<string> entries = File.ReadLines("file-database.csv");
+                string firstEntry = entries.First();
+                string[] elementsOfFirstEntry = firstEntry.Split(',');
+
+                titelTextBox.Text = elementsOfFirstEntry[0];
+                urlTextBox.Text = elementsOfFirstEntry[1];
+            }
+        }
     }
 }
