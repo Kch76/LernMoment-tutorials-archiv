@@ -36,5 +36,11 @@ namespace TutorialsArchiv
                 urlTextBox.Text = elementsOfFirstEntry[1];
             }
         }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            titelTextBox.Text = string.Empty;
+            urlTextBox.Text = string.Empty;
+        }
     }
 }
