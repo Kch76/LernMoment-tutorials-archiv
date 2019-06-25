@@ -16,20 +16,20 @@ namespace TutorialsArchiv
             _fileName = fileName;
         }
 
-        public void Save(string entry)
+        public void Save(TeachingResource entry)
         {
-            File.AppendAllText(_fileName, entry);
+            File.AppendAllText(_fileName, entry.ToCsvLine());
         }
 
-        public string LoadFirstEntry()
+        public TeachingResource LoadFirstEntry()
         {
             if (File.Exists(_fileName))
             {
                 IEnumerable<string> entries = File.ReadLines(_fileName);
-                return entries.First();
+                return TeachingResource.BuildFromCsvLine(entries.First());
             }
 
-            return string.Empty;
+            return null;
         }
     }
 }

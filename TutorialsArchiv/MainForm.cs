@@ -23,19 +23,16 @@ namespace TutorialsArchiv
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            string entry = $"{titelTextBox.Text}, {urlTextBox.Text}";
-            _db.Save(entry);
+            _db.Save(new TeachingResource(titelTextBox.Text, urlTextBox.Text));
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            string firstEntry = _db.LoadFirstEntry();
-            if (firstEntry != string.Empty)
+            TeachingResource firstEntry = _db.LoadFirstEntry();
+            if (firstEntry != null)
             {
-                string[] elementsOfFirstEntry = firstEntry.Split(',');
-
-                titelTextBox.Text = elementsOfFirstEntry[0];
-                urlTextBox.Text = elementsOfFirstEntry[1];
+                titelTextBox.Text = firstEntry.Title;
+                urlTextBox.Text = firstEntry.Url;
             }
         }
 
