@@ -13,7 +13,7 @@ namespace TutorialsArchiv
 {
     public partial class MainForm : Form
     {
-        private FileDatabase _db = null;
+        private readonly FileDatabase _db = null;
 
         public MainForm()
         {
