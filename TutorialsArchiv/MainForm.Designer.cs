@@ -48,14 +48,14 @@
             // 
             this.urlTextBox.Location = new System.Drawing.Point(50, 58);
             this.urlTextBox.Name = "urlTextBox";
-            this.urlTextBox.Size = new System.Drawing.Size(100, 20);
+            this.urlTextBox.Size = new System.Drawing.Size(323, 20);
             this.urlTextBox.TabIndex = 3;
             // 
             // titelTextBox
             // 
             this.titelTextBox.Location = new System.Drawing.Point(50, 32);
             this.titelTextBox.Name = "titelTextBox";
-            this.titelTextBox.Size = new System.Drawing.Size(100, 20);
+            this.titelTextBox.Size = new System.Drawing.Size(323, 20);
             this.titelTextBox.TabIndex = 1;
             // 
             // titelLabel
@@ -69,7 +69,7 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(61, 84);
+            this.saveButton.Location = new System.Drawing.Point(298, 92);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 4;
@@ -77,18 +77,18 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(211, 127);
+            this.ClientSize = new System.Drawing.Size(385, 127);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.titelTextBox);
             this.Controls.Add(this.titelLabel);
             this.Controls.Add(this.urlTextBox);
             this.Controls.Add(this.urlLabel);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.Text = "Lernmaterial Finder";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
