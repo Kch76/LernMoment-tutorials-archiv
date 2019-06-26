@@ -24,9 +24,15 @@ namespace TutorialsArchiv
         private void SaveButton_Click(object sender, EventArgs e)
         {
             _db.Save(new TeachingResource(titelTextBox.Text, urlTextBox.Text));
+            RefreshDGV();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
+        {
+            RefreshDGV();
+        }
+
+        private void RefreshDGV()
         {
             IEnumerable<TeachingResource> allResources = _db.LoadAllEntries();
             teachingResourcesDGV.DataSource = allResources;
