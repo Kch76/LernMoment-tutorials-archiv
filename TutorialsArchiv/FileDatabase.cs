@@ -31,5 +31,21 @@ namespace TutorialsArchiv
 
             return null;
         }
+
+        public IEnumerable<TeachingResource> LoadAllEntries()
+        {
+            List<TeachingResource> allResources = new List<TeachingResource>();
+
+            if (File.Exists(_fileName))
+            {
+                IEnumerable<string> csvLines = File.ReadLines(_fileName);
+                foreach (string entry in csvLines)
+                {
+                    allResources.Add(TeachingResource.BuildFromCsvLine(entry));
+                }
+            }
+
+            return allResources;
+        }
     }
 }

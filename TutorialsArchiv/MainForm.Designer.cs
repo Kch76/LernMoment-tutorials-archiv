@@ -34,6 +34,8 @@
             this.titelLabel = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.teachingResourcesDGV = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // urlLabel
@@ -88,11 +90,23 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
+            // teachingResourcesDGV
+            // 
+            this.teachingResourcesDGV.AllowUserToAddRows = false;
+            this.teachingResourcesDGV.AllowUserToDeleteRows = false;
+            this.teachingResourcesDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.teachingResourcesDGV.Location = new System.Drawing.Point(50, 136);
+            this.teachingResourcesDGV.Name = "teachingResourcesDGV";
+            this.teachingResourcesDGV.ReadOnly = true;
+            this.teachingResourcesDGV.Size = new System.Drawing.Size(323, 230);
+            this.teachingResourcesDGV.TabIndex = 6;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 127);
+            this.ClientSize = new System.Drawing.Size(385, 378);
+            this.Controls.Add(this.teachingResourcesDGV);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.titelTextBox);
@@ -102,6 +116,7 @@
             this.Name = "MainForm";
             this.Text = "Lernmaterial Finder";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -115,6 +130,7 @@
         private System.Windows.Forms.Label titelLabel;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.DataGridView teachingResourcesDGV;
     }
 }
 

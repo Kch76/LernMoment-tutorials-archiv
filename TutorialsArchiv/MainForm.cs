@@ -28,12 +28,8 @@ namespace TutorialsArchiv
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            TeachingResource firstEntry = _db.LoadFirstEntry();
-            if (firstEntry != null)
-            {
-                titelTextBox.Text = firstEntry.Title;
-                urlTextBox.Text = firstEntry.Url;
-            }
+            IEnumerable<TeachingResource> allResources = _db.LoadAllEntries();
+            teachingResourcesDGV.DataSource = allResources;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
