@@ -71,9 +71,22 @@ namespace TutorialsArchiv
 
         private void TeachingResourcesDGV_SelectionChanged(object sender, EventArgs e)
         {
-            TeachingResource resource = teachingResourcesDGV.CurrentRow.DataBoundItem as TeachingResource;
+            TeachingResource resource = GetCurrentlySelectedResource();
             titelTextBox.Text = resource.Title;
             urlTextBox.Text = resource.Url;
+        }
+
+        private TeachingResource GetCurrentlySelectedResource()
+        {
+            return teachingResourcesDGV.CurrentRow.DataBoundItem as TeachingResource;
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            TeachingResource resource = GetCurrentlySelectedResource();
+            _allResources.Remove(resource);
+            _db.Save(_allResources);
+            RefreshDGV();
         }
     }
 }

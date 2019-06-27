@@ -35,6 +35,7 @@
             this.createButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.teachingResourcesDGV = new System.Windows.Forms.DataGridView();
+            this.deleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,11 +106,22 @@
             this.teachingResourcesDGV.TabIndex = 6;
             this.teachingResourcesDGV.SelectionChanged += new System.EventHandler(this.TeachingResourcesDGV_SelectionChanged);
             // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(50, 91);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 7;
+            this.deleteButton.Text = "Entfernen";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(385, 378);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.teachingResourcesDGV);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.createButton);
@@ -135,6 +147,7 @@
         private System.Windows.Forms.Button createButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.DataGridView teachingResourcesDGV;
+        private System.Windows.Forms.Button deleteButton;
     }
 }
 
