@@ -58,5 +58,12 @@ namespace TutorialsArchiv
             saveButton.Enabled = true;
             cancelButton.Enabled = true;
         }
+
+        private void TeachingResourcesDGV_SelectionChanged(object sender, EventArgs e)
+        {
+            TeachingResource resource = teachingResourcesDGV.CurrentRow.DataBoundItem as TeachingResource;
+            titelTextBox.Text = resource.Title;
+            urlTextBox.Text = resource.Url;
+        }
     }
 }

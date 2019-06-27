@@ -100,8 +100,10 @@
             this.teachingResourcesDGV.Location = new System.Drawing.Point(50, 136);
             this.teachingResourcesDGV.Name = "teachingResourcesDGV";
             this.teachingResourcesDGV.ReadOnly = true;
+            this.teachingResourcesDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.teachingResourcesDGV.Size = new System.Drawing.Size(323, 230);
             this.teachingResourcesDGV.TabIndex = 6;
+            this.teachingResourcesDGV.SelectionChanged += new System.EventHandler(this.TeachingResourcesDGV_SelectionChanged);
             // 
             // MainForm
             // 
