@@ -88,5 +88,14 @@ namespace TutorialsArchiv
             _db.Save(_allResources);
             RefreshDGV();
         }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            TeachingResource resource = GetCurrentlySelectedResource();
+            resource.Title = titelTextBox.Text;
+            resource.Url = urlTextBox.Text;
+            _db.Save(_allResources);
+            RefreshDGV();
+        }
     }
 }

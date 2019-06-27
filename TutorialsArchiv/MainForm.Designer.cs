@@ -36,6 +36,7 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.teachingResourcesDGV = new System.Windows.Forms.DataGridView();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.updateButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,7 +109,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(50, 91);
+            this.deleteButton.Location = new System.Drawing.Point(50, 92);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 7;
@@ -116,11 +117,22 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
+            // updateButton
+            // 
+            this.updateButton.Location = new System.Drawing.Point(131, 92);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(75, 23);
+            this.updateButton.TabIndex = 8;
+            this.updateButton.Text = "Ändern";
+            this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(385, 378);
+            this.Controls.Add(this.updateButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.teachingResourcesDGV);
             this.Controls.Add(this.cancelButton);
@@ -148,6 +160,7 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.DataGridView teachingResourcesDGV;
         private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button updateButton;
     }
 }
 

@@ -8,8 +8,8 @@ namespace TutorialsArchiv
 {
     class TeachingResource
     {
-        public string Title { get; private set; }
-        public string Url { get; private set; }
+        public string Title { get; set; }
+        public string Url { get; set; }
 
         public TeachingResource(string theTitle, string theUrl)
         {
