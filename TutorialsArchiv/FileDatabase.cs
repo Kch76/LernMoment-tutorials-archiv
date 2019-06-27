@@ -16,9 +16,16 @@ namespace TutorialsArchiv
             _fileName = fileName;
         }
 
-        public void Save(TeachingResource entry)
+        public void Save(IEnumerable<TeachingResource> entries)
         {
-            File.AppendAllText(_fileName, entry.ToCsvLine());
+            if (File.Exists(_fileName))
+            {
+                File.Delete(_fileName);
+            }
+
+            List<string> csvLines = ConvertToCsvLines(entries);
+
+            File.AppendAllLines(_fileName, csvLines);
         }
 
         public TeachingResource LoadFirstEntry()
@@ -47,5 +54,17 @@ namespace TutorialsArchiv
 
             return allResources;
         }
+
+        private static List<string> ConvertToCsvLines(IEnumerable<TeachingResource> entries)
+        {
+            List<string> csvLines = new List<string>();
+            foreach (var item in entries)
+            {
+                csvLines.Add(item.ToCsvLine());
+            }
+
+            return csvLines;
+        }
+
     }
 }

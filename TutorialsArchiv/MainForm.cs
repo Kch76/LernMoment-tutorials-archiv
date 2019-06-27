@@ -14,16 +14,19 @@ namespace TutorialsArchiv
     public partial class MainForm : Form
     {
         private readonly FileDatabase _db = null;
+        private readonly List<TeachingResource> _allResources = null;
 
         public MainForm()
         {
             InitializeComponent();
+            _allResources = new List<TeachingResource>();
             _db = new FileDatabase("file-database.csv");
         }
 
-        private void SaveButton_Click(object sender, EventArgs e)
+        private void CreateButton_Click(object sender, EventArgs e)
         {
-            _db.Save(new TeachingResource(titelTextBox.Text, urlTextBox.Text));
+            _allResources.Add(new TeachingResource(titelTextBox.Text, urlTextBox.Text));
+            _db.Save(_allResources);
             RefreshDGV();
             ClearEntryUIElements();
         }
@@ -40,14 +43,18 @@ namespace TutorialsArchiv
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            _allResources.AddRange(_db.LoadAllEntries());
             RefreshDGV();
             ClearEntryUIElements();
         }
 
         private void RefreshDGV()
         {
-            IEnumerable<TeachingResource> allResources = _db.LoadAllEntries();
-            teachingResourcesDGV.DataSource = allResources;
+            // HACK: JS, Our _allResources does currently not support data binding. Thus we need to improvise
+            teachingResourcesDGV.DataSource = null;
+            teachingResourcesDGV.Rows.Clear();
+            teachingResourcesDGV.DataSource = _allResources;
+            teachingResourcesDGV.Refresh();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)

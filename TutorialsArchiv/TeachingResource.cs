@@ -19,7 +19,7 @@ namespace TutorialsArchiv
 
         public string ToCsvLine()
         {
-            return $"{Title},{Url}{Environment.NewLine}";
+            return $"{Title},{Url}";
         }
 
         public static TeachingResource BuildFromCsvLine(string csvLine)

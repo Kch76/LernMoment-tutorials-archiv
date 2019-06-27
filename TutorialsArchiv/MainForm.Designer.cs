@@ -80,7 +80,7 @@
             this.createButton.TabIndex = 4;
             this.createButton.Text = "Erstellen";
             this.createButton.UseVisualStyleBackColor = true;
-            this.createButton.Click += new System.EventHandler(this.SaveButton_Click);
+            this.createButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // cancelButton
             // 
