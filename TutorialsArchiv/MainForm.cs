@@ -31,6 +31,8 @@ namespace TutorialsArchiv
         private void ClearEntryUIElements()
         {
             saveButton.Enabled = false;
+            saveButton.Text = "Gespeichert";
+
             cancelButton.Enabled = false;
             titelTextBox.Text = string.Empty;
             urlTextBox.Text = string.Empty;
@@ -56,6 +58,7 @@ namespace TutorialsArchiv
         private void EnableEntryButtons(object sender, KeyPressEventArgs e)
         {
             saveButton.Enabled = true;
+            saveButton.Text = "Speichern";
             cancelButton.Enabled = true;
         }
 
