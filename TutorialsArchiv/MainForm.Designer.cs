@@ -53,7 +53,7 @@
             this.urlTextBox.Name = "urlTextBox";
             this.urlTextBox.Size = new System.Drawing.Size(323, 20);
             this.urlTextBox.TabIndex = 3;
-            this.urlTextBox.TextChanged += new System.EventHandler(this.EnableEntryButtons);
+            this.urlTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnableEntryButtons);
             // 
             // titelTextBox
             // 
@@ -61,7 +61,7 @@
             this.titelTextBox.Name = "titelTextBox";
             this.titelTextBox.Size = new System.Drawing.Size(323, 20);
             this.titelTextBox.TabIndex = 1;
-            this.titelTextBox.TextChanged += new System.EventHandler(this.EnableEntryButtons);
+            this.titelTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EnableEntryButtons);
             // 
             // titelLabel
             // 

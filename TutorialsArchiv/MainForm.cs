@@ -52,7 +52,7 @@ namespace TutorialsArchiv
             ClearEntryUIElements();
         }
 
-        private void EnableEntryButtons(object sender, EventArgs e)
+        private void EnableEntryButtons(object sender, KeyPressEventArgs e)
         {
             saveButton.Enabled = true;
             cancelButton.Enabled = true;
