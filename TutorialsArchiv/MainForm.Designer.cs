@@ -32,7 +32,7 @@
             this.urlTextBox = new System.Windows.Forms.TextBox();
             this.titelTextBox = new System.Windows.Forms.TextBox();
             this.titelLabel = new System.Windows.Forms.Label();
-            this.saveButton = new System.Windows.Forms.Button();
+            this.createButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.teachingResourcesDGV = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
@@ -72,15 +72,15 @@
             this.titelLabel.TabIndex = 2;
             this.titelLabel.Text = "Titel:";
             // 
-            // saveButton
+            // createButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(298, 92);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 4;
-            this.saveButton.Text = "Speichern";
-            this.saveButton.UseVisualStyleBackColor = true;
-            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            this.createButton.Location = new System.Drawing.Point(298, 92);
+            this.createButton.Name = "createButton";
+            this.createButton.Size = new System.Drawing.Size(75, 23);
+            this.createButton.TabIndex = 4;
+            this.createButton.Text = "Erstellen";
+            this.createButton.UseVisualStyleBackColor = true;
+            this.createButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // cancelButton
             // 
@@ -112,7 +112,7 @@
             this.ClientSize = new System.Drawing.Size(385, 378);
             this.Controls.Add(this.teachingResourcesDGV);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.saveButton);
+            this.Controls.Add(this.createButton);
             this.Controls.Add(this.titelTextBox);
             this.Controls.Add(this.titelLabel);
             this.Controls.Add(this.urlTextBox);
@@ -132,7 +132,7 @@
         private System.Windows.Forms.TextBox urlTextBox;
         private System.Windows.Forms.TextBox titelTextBox;
         private System.Windows.Forms.Label titelLabel;
-        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button createButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.DataGridView teachingResourcesDGV;
     }

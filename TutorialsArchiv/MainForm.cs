@@ -30,8 +30,8 @@ namespace TutorialsArchiv
 
         private void ClearEntryUIElements()
         {
-            saveButton.Enabled = false;
-            saveButton.Text = "Gespeichert";
+            createButton.Enabled = false;
+            createButton.Text = "Erstellt";
 
             cancelButton.Enabled = false;
             titelTextBox.Text = string.Empty;
@@ -57,8 +57,8 @@ namespace TutorialsArchiv
 
         private void EnableEntryButtons(object sender, KeyPressEventArgs e)
         {
-            saveButton.Enabled = true;
-            saveButton.Text = "Speichern";
+            createButton.Enabled = true;
+            createButton.Text = "Erstellen";
             cancelButton.Enabled = true;
         }
 
