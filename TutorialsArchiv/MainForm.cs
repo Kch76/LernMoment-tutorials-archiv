@@ -51,5 +51,11 @@ namespace TutorialsArchiv
         {
             ClearEntryUIElements();
         }
+
+        private void EnableEntryButtons(object sender, EventArgs e)
+        {
+            saveButton.Enabled = true;
+            cancelButton.Enabled = true;
+        }
     }
 }
