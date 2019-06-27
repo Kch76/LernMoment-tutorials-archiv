@@ -39,6 +39,7 @@ namespace TutorialsArchiv
         private void MainForm_Load(object sender, EventArgs e)
         {
             RefreshDGV();
+            ClearEntryUIElements();
         }
 
         private void RefreshDGV()
