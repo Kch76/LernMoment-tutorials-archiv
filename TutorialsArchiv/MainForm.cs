@@ -25,6 +25,15 @@ namespace TutorialsArchiv
         {
             _db.Save(new TeachingResource(titelTextBox.Text, urlTextBox.Text));
             RefreshDGV();
+            ClearEntryUIElements();
+        }
+
+        private void ClearEntryUIElements()
+        {
+            saveButton.Enabled = false;
+            cancelButton.Enabled = false;
+            titelTextBox.Text = string.Empty;
+            urlTextBox.Text = string.Empty;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -40,8 +49,7 @@ namespace TutorialsArchiv
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            titelTextBox.Text = string.Empty;
-            urlTextBox.Text = string.Empty;
+            ClearEntryUIElements();
         }
     }
 }
