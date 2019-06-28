@@ -61,11 +61,13 @@ namespace TutorialsArchiv
         private void RefreshDGV()
         {
             // HACK: JS, Our _allResources does currently not support data binding. Thus we need to improvise
+            teachingResourcesDGV.SelectionChanged -= new EventHandler(TeachingResourcesDGV_SelectionChanged);
             teachingResourcesDGV.DataSource = null;
             teachingResourcesDGV.Rows.Clear();
             teachingResourcesDGV.DataSource = _allResources;
             teachingResourcesDGV.Refresh();
             teachingResourcesDGV.ClearSelection();
+            teachingResourcesDGV.SelectionChanged += new EventHandler(TeachingResourcesDGV_SelectionChanged);
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -98,6 +100,7 @@ namespace TutorialsArchiv
             _allResources.Remove(resource);
             _db.Save(_allResources);
             RefreshDGV();
+            ClearEntryUIElements();
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
