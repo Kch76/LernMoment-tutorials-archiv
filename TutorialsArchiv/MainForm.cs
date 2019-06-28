@@ -24,6 +24,30 @@ namespace TutorialsArchiv
             _db = new FileDatabase("file-database.csv");
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            _allResources.AddRange(_db.LoadAllEntries());
+            EnterNoSelectionMode();
+        }
+
+        private void EnterNoSelectionMode()
+        {
+            if (_isUserEditing)
+            {
+                throw new InvalidOperationException("Wir befinden uns im Editiermodus. Das darf jetzt nicht sein!");
+            }
+
+            cancelButton.Enabled = false;
+            deleteButton.Enabled = false;
+            updateButton.Enabled = false;
+
+            titelTextBox.Text = string.Empty;
+            urlTextBox.Text = string.Empty;
+
+            RefreshDGV();
+            teachingResourcesDGV.Select(); // Der Detailbereich soll nicht den Fokus haben!
+        }
+
         private void CreateButton_Click(object sender, EventArgs e)
         {
             if (_isUserEditing)
@@ -49,13 +73,6 @@ namespace TutorialsArchiv
             cancelButton.Enabled = false;
             titelTextBox.Text = string.Empty;
             urlTextBox.Text = string.Empty;
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            _allResources.AddRange(_db.LoadAllEntries());
-            RefreshDGV();
-            ClearEntryUIElements();
         }
 
         private void RefreshDGV()
