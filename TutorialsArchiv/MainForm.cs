@@ -48,6 +48,30 @@ namespace TutorialsArchiv
             teachingResourcesDGV.Select(); // Der Detailbereich soll nicht den Fokus haben!
         }
 
+        private void TeachingResourcesDGV_SelectionChanged(object sender, EventArgs e)
+        {
+            TeachingResource resource = GetCurrentlySelectedResource();
+            EnterSelectionMode(resource);
+        }
+
+        private void EnterSelectionMode(TeachingResource selectedResource)
+        {
+            if (_isUserEditing)
+            {
+                throw new InvalidOperationException("Wir befinden uns im Editiermodus. Das darf jetzt nicht sein!");
+            }
+
+            deleteButton.Enabled = true;
+            cancelButton.Enabled = false;
+            updateButton.Enabled = false;
+
+            titelTextBox.Text = selectedResource.Title;
+            urlTextBox.Text = selectedResource.Url;
+
+            RefreshDGV();
+            titelTextBox.Select();
+        }
+
         private void CreateButton_Click(object sender, EventArgs e)
         {
             if (_isUserEditing)
@@ -97,13 +121,6 @@ namespace TutorialsArchiv
             createButton.Enabled = true;
             createButton.Text = "Erstellen";
             cancelButton.Enabled = true;
-        }
-
-        private void TeachingResourcesDGV_SelectionChanged(object sender, EventArgs e)
-        {
-            TeachingResource resource = GetCurrentlySelectedResource();
-            titelTextBox.Text = resource.Title;
-            urlTextBox.Text = resource.Url;
         }
 
         private TeachingResource GetCurrentlySelectedResource()
