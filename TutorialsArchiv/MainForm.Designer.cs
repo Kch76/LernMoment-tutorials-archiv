@@ -43,7 +43,7 @@
             // urlLabel
             // 
             this.urlLabel.AutoSize = true;
-            this.urlLabel.Location = new System.Drawing.Point(12, 61);
+            this.urlLabel.Location = new System.Drawing.Point(331, 63);
             this.urlLabel.Name = "urlLabel";
             this.urlLabel.Size = new System.Drawing.Size(32, 13);
             this.urlLabel.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             // urlTextBox
             // 
-            this.urlTextBox.Location = new System.Drawing.Point(50, 58);
+            this.urlTextBox.Location = new System.Drawing.Point(369, 60);
             this.urlTextBox.Name = "urlTextBox";
             this.urlTextBox.Size = new System.Drawing.Size(323, 20);
             this.urlTextBox.TabIndex = 3;
@@ -59,7 +59,7 @@
             // 
             // titelTextBox
             // 
-            this.titelTextBox.Location = new System.Drawing.Point(50, 32);
+            this.titelTextBox.Location = new System.Drawing.Point(369, 34);
             this.titelTextBox.Name = "titelTextBox";
             this.titelTextBox.Size = new System.Drawing.Size(323, 20);
             this.titelTextBox.TabIndex = 1;
@@ -68,7 +68,7 @@
             // titelLabel
             // 
             this.titelLabel.AutoSize = true;
-            this.titelLabel.Location = new System.Drawing.Point(12, 35);
+            this.titelLabel.Location = new System.Drawing.Point(331, 37);
             this.titelLabel.Name = "titelLabel";
             this.titelLabel.Size = new System.Drawing.Size(30, 13);
             this.titelLabel.TabIndex = 2;
@@ -76,9 +76,9 @@
             // 
             // createButton
             // 
-            this.createButton.Location = new System.Drawing.Point(298, 92);
+            this.createButton.Location = new System.Drawing.Point(12, 343);
             this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(75, 23);
+            this.createButton.Size = new System.Drawing.Size(90, 23);
             this.createButton.TabIndex = 4;
             this.createButton.Text = "Erstellen";
             this.createButton.UseVisualStyleBackColor = true;
@@ -86,7 +86,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(217, 92);
+            this.cancelButton.Location = new System.Drawing.Point(536, 306);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 5;
@@ -99,17 +99,17 @@
             this.teachingResourcesDGV.AllowUserToAddRows = false;
             this.teachingResourcesDGV.AllowUserToDeleteRows = false;
             this.teachingResourcesDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.teachingResourcesDGV.Location = new System.Drawing.Point(50, 136);
+            this.teachingResourcesDGV.Location = new System.Drawing.Point(12, 12);
             this.teachingResourcesDGV.Name = "teachingResourcesDGV";
             this.teachingResourcesDGV.ReadOnly = true;
             this.teachingResourcesDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.teachingResourcesDGV.Size = new System.Drawing.Size(323, 230);
+            this.teachingResourcesDGV.Size = new System.Drawing.Size(286, 317);
             this.teachingResourcesDGV.TabIndex = 6;
             this.teachingResourcesDGV.SelectionChanged += new System.EventHandler(this.TeachingResourcesDGV_SelectionChanged);
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(50, 92);
+            this.deleteButton.Location = new System.Drawing.Point(369, 306);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 7;
@@ -119,7 +119,7 @@
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(131, 92);
+            this.updateButton.Location = new System.Drawing.Point(617, 306);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 23);
             this.updateButton.TabIndex = 8;
@@ -131,7 +131,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 378);
+            this.ClientSize = new System.Drawing.Size(721, 378);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.teachingResourcesDGV);
