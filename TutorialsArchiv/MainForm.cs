@@ -59,11 +59,6 @@ namespace TutorialsArchiv
             teachingResourcesDGV.Select(); // Der Detailbereich soll nicht den Fokus haben!
         }
 
-        private void TeachingResourcesDGV_SelectionChanged(object sender, EventArgs e)
-        {
-            EnterSelectionMode(GetCurrentlySelectedResource());
-        }
-
         private void EnterSelectionMode(TeachingResource selectedResource)
         {
             if (_mode == EntryMode.UserEditsResource)
@@ -137,18 +132,21 @@ namespace TutorialsArchiv
         private void RefreshDGV()
         {
             // HACK: JS, Our _allResources does currently not support data binding. Thus we need to improvise
-            teachingResourcesDGV.SelectionChanged -= new EventHandler(TeachingResourcesDGV_SelectionChanged);
+            //teachingResourcesDGV.RowEnter -= new DataGridViewCellEventHandler(TeachingResourcesDGV_RowEnter);
             teachingResourcesDGV.DataSource = null;
             teachingResourcesDGV.Rows.Clear();
             teachingResourcesDGV.DataSource = _allResources;
             teachingResourcesDGV.Refresh();
             teachingResourcesDGV.ClearSelection();
-            teachingResourcesDGV.SelectionChanged += new EventHandler(TeachingResourcesDGV_SelectionChanged);
+            //teachingResourcesDGV.RowEnter += new DataGridViewCellEventHandler(TeachingResourcesDGV_RowEnter);
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            ClearEntryUIElements();
+            // TODO: JS, should we ask user whether he is sure to delete the input?
+            _activeResource = null;
+            _mode = EntryMode.NoSelection;
+            EnterNoSelectionMode();
         }
 
         private TeachingResource GetCurrentlySelectedResource()
@@ -172,6 +170,12 @@ namespace TutorialsArchiv
             resource.Url = urlTextBox.Text;
             _db.Save(_allResources);
             RefreshDGV();
+        }
+
+        private void TeachingResourcesDGV_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            TeachingResource selectedResource = teachingResourcesDGV.Rows[e.RowIndex].DataBoundItem as TeachingResource;
+            EnterSelectionMode(selectedResource);
         }
     }
 }

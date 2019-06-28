@@ -105,7 +105,7 @@
             this.teachingResourcesDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.teachingResourcesDGV.Size = new System.Drawing.Size(286, 317);
             this.teachingResourcesDGV.TabIndex = 6;
-            this.teachingResourcesDGV.SelectionChanged += new System.EventHandler(this.TeachingResourcesDGV_SelectionChanged);
+            this.teachingResourcesDGV.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.TeachingResourcesDGV_RowEnter);
             // 
             // deleteButton
             // 
