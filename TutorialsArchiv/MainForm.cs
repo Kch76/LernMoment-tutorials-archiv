@@ -15,6 +15,7 @@ namespace TutorialsArchiv
     {
         private readonly FileDatabase _db = null;
         private readonly List<TeachingResource> _allResources = null;
+        private bool _isUserEditing = false;
 
         public MainForm()
         {
@@ -25,17 +26,26 @@ namespace TutorialsArchiv
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            _allResources.Add(new TeachingResource(titelTextBox.Text, urlTextBox.Text));
-            _db.Save(_allResources);
+            if (_isUserEditing)
+            {
+                MessageBox.Show("Bitte erst die Änderungen speichern oder verwerfen!");
+                return;
+            }
+
+            _allResources.Add(new TeachingResource("Neue Ressource", "bitte ausfüllen"));
             RefreshDGV();
+            SelectLastRowInDGV();
             ClearEntryUIElements();
+            _isUserEditing = true;
+        }
+
+        private void SelectLastRowInDGV()
+        {
+            teachingResourcesDGV.CurrentCell = teachingResourcesDGV.Rows[teachingResourcesDGV.Rows.Count - 1].Cells[0];
         }
 
         private void ClearEntryUIElements()
         {
-            createButton.Enabled = false;
-            createButton.Text = "Erstellt";
-
             cancelButton.Enabled = false;
             titelTextBox.Text = string.Empty;
             urlTextBox.Text = string.Empty;
@@ -55,6 +65,7 @@ namespace TutorialsArchiv
             teachingResourcesDGV.Rows.Clear();
             teachingResourcesDGV.DataSource = _allResources;
             teachingResourcesDGV.Refresh();
+            teachingResourcesDGV.ClearSelection();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
