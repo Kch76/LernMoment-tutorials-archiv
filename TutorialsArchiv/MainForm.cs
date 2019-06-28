@@ -28,6 +28,7 @@ namespace TutorialsArchiv
         {
             _allResources.AddRange(_db.LoadAllEntries());
             EnterNoSelectionMode();
+            RefreshDGV();
         }
 
         private void EnterNoSelectionMode()
@@ -44,7 +45,6 @@ namespace TutorialsArchiv
             titelTextBox.Text = string.Empty;
             urlTextBox.Text = string.Empty;
 
-            RefreshDGV();
             teachingResourcesDGV.Select(); // Der Detailbereich soll nicht den Fokus haben!
         }
 
@@ -70,6 +70,31 @@ namespace TutorialsArchiv
 
             RefreshDGV();
             titelTextBox.Select();
+        }
+
+        private void AllTextBoxes_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EnterEditingMode();
+        }
+
+        private void EnterEditingMode()
+        {
+            if (_isUserEditing)
+            {
+                return;
+            }
+            else if (teachingResourcesDGV.SelectedCells.Count == 0)
+            {
+                MessageBox.Show(this, "Es wurde noch kein Eintrag zum Ändern ausgewählt oder hinzugefügt!");
+                EnterNoSelectionMode();
+                return;
+            }
+
+            _isUserEditing = true;
+
+            deleteButton.Enabled = true;
+            cancelButton.Enabled = true;
+            updateButton.Enabled = true;
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
@@ -114,13 +139,6 @@ namespace TutorialsArchiv
         private void CancelButton_Click(object sender, EventArgs e)
         {
             ClearEntryUIElements();
-        }
-
-        private void EnableEntryButtons(object sender, KeyPressEventArgs e)
-        {
-            createButton.Enabled = true;
-            createButton.Text = "Erstellen";
-            cancelButton.Enabled = true;
         }
 
         private TeachingResource GetCurrentlySelectedResource()
