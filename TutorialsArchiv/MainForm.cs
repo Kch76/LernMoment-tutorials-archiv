@@ -13,9 +13,17 @@ namespace TutorialsArchiv
 {
     public partial class MainForm : Form
     {
+        enum EntryMode
+        {
+            NoSelection = 0,
+            ResourceSelected,
+            UserEditsResource
+        }
+
         private readonly FileDatabase _db = null;
         private readonly List<TeachingResource> _allResources = null;
-        private bool _isUserEditing = false;
+        private EntryMode _mode = EntryMode.NoSelection;
+        private TeachingResource _activeResource = null;
 
         public MainForm()
         {
@@ -33,10 +41,13 @@ namespace TutorialsArchiv
 
         private void EnterNoSelectionMode()
         {
-            if (_isUserEditing)
+            if (_mode == EntryMode.UserEditsResource)
             {
                 throw new InvalidOperationException("Wir befinden uns im Editiermodus. Das darf jetzt nicht sein!");
             }
+
+            _mode = EntryMode.NoSelection;
+            _activeResource = null;
 
             cancelButton.Enabled = false;
             deleteButton.Enabled = false;
@@ -50,25 +61,26 @@ namespace TutorialsArchiv
 
         private void TeachingResourcesDGV_SelectionChanged(object sender, EventArgs e)
         {
-            TeachingResource resource = GetCurrentlySelectedResource();
-            EnterSelectionMode(resource);
+            EnterSelectionMode(GetCurrentlySelectedResource());
         }
 
         private void EnterSelectionMode(TeachingResource selectedResource)
         {
-            if (_isUserEditing)
+            if (_mode == EntryMode.UserEditsResource)
             {
                 throw new InvalidOperationException("Wir befinden uns im Editiermodus. Das darf jetzt nicht sein!");
             }
+
+            _mode = EntryMode.ResourceSelected;
+            _activeResource = selectedResource;
 
             deleteButton.Enabled = true;
             cancelButton.Enabled = false;
             updateButton.Enabled = false;
 
-            titelTextBox.Text = selectedResource.Title;
-            urlTextBox.Text = selectedResource.Url;
+            titelTextBox.Text = _activeResource.Title;
+            urlTextBox.Text = _activeResource.Url;
 
-            RefreshDGV();
             titelTextBox.Select();
         }
 
@@ -79,18 +91,18 @@ namespace TutorialsArchiv
 
         private void EnterEditingMode()
         {
-            if (_isUserEditing)
+            if (_mode == EntryMode.UserEditsResource)
             {
                 return;
             }
-            else if (teachingResourcesDGV.SelectedCells.Count == 0)
+            else if (_activeResource == null)
             {
                 MessageBox.Show(this, "Es wurde noch kein Eintrag zum Ändern ausgewählt oder hinzugefügt!");
                 EnterNoSelectionMode();
                 return;
             }
 
-            _isUserEditing = true;
+            _mode = EntryMode.UserEditsResource;
 
             deleteButton.Enabled = true;
             cancelButton.Enabled = true;
@@ -99,7 +111,7 @@ namespace TutorialsArchiv
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            if (_isUserEditing)
+            if (_mode == EntryMode.UserEditsResource)
             {
                 MessageBox.Show("Bitte erst die Änderungen speichern oder verwerfen!");
                 return;
@@ -108,8 +120,6 @@ namespace TutorialsArchiv
             _allResources.Add(new TeachingResource("Neue Ressource", "bitte ausfüllen"));
             RefreshDGV();
             SelectLastRowInDGV();
-            ClearEntryUIElements();
-            _isUserEditing = true;
         }
 
         private void SelectLastRowInDGV()
