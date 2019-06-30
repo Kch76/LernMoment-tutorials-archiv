@@ -53,9 +53,31 @@ namespace TutorialsArchiv
             titelTextBox.Text = string.Empty;
             urlTextBox.Text = string.Empty;
 
-            //teachingResourcesDGV.Select(); // Der Detailbereich soll nicht den Fokus haben!
+            EnableDgv(teachingResourcesDGV);
         }
 
+        private static void DisableDgv(DataGridView dgv)
+        {
+            dgv.Enabled = false;
+            dgv.DefaultCellStyle.BackColor = SystemColors.Control;
+            dgv.DefaultCellStyle.ForeColor = SystemColors.GrayText;
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.Control;
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = SystemColors.GrayText;
+            dgv.CurrentCell = null;
+            dgv.ReadOnly = true;
+            dgv.EnableHeadersVisualStyles = false;
+        }
+
+        private static void EnableDgv(DataGridView dgv)
+        {
+            dgv.Enabled = true;
+            dgv.DefaultCellStyle.BackColor = SystemColors.Window;
+            dgv.DefaultCellStyle.ForeColor = SystemColors.ControlText;
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.Window;
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = SystemColors.ControlText;
+            dgv.ReadOnly = false;
+            dgv.EnableHeadersVisualStyles = true;
+        }
         private void EnterSelectExistingMode(TeachingResource selectedResource)
         {
             _mode = UiMode.UserSelectedExistingResource;
@@ -73,20 +95,25 @@ namespace TutorialsArchiv
 
         private void AllTextBoxes_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // editing a new Resource is different than an editing an existing Resource
-            if (_mode != UiMode.UserEditsNewResource)
+            // editing a new Resource is different than editing an existing Resource
+            if (_mode == UiMode.UserEditsNewResource || _mode == UiMode.UserEditsExistingResource)
+            {
+                // editing allowed without further intervention
+                return;
+            }
+            else if (_mode == UiMode.UserSelectedExistingResource)
             {
                 EnterEditExistingMode();
+            }
+            else
+            {
+                throw new InvalidOperationException($"UI ist im {_mode} Modus im dem editieren nicht erlaubt ist!");
             }
         }
 
         private void EnterEditExistingMode()
         {
-            if (_mode == UiMode.UserEditsExistingResource)
-            {
-                return;
-            }
-            else if (_activeResource == null)
+            if (_activeResource == null)
             {
                 MessageBox.Show(this, "Es wurde noch kein Eintrag zum Ändern ausgewählt!");
                 EnterInitMode();
@@ -95,9 +122,12 @@ namespace TutorialsArchiv
 
             _mode = UiMode.UserEditsExistingResource;
 
-            deleteButton.Enabled = true;
+            deleteButton.Enabled = false;
+            createButton.Enabled = false;
             cancelButton.Enabled = true;
             updateButton.Enabled = true;
+
+            DisableDgv(teachingResourcesDGV);
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
@@ -144,13 +174,6 @@ namespace TutorialsArchiv
             teachingResourcesDGV.CurrentCell = teachingResourcesDGV.Rows[teachingResourcesDGV.Rows.Count - 1].Cells[0];
         }
 
-        private void ClearEntryUIElements()
-        {
-            cancelButton.Enabled = false;
-            titelTextBox.Text = string.Empty;
-            urlTextBox.Text = string.Empty;
-        }
-
         private void RefreshDGV()
         {
             // HACK: JS, Our _allResources does currently not support data binding. Thus we need to improvise
@@ -171,8 +194,10 @@ namespace TutorialsArchiv
                 _allResources.RemoveAt(_allResources.Count - 1);
                 RefreshDGV();
 
-                _activeResource = null;
-                _mode = UiMode.Init;
+                EnterInitMode();
+            }
+            else if (_mode == UiMode.UserEditsExistingResource)
+            {
                 EnterInitMode();
             }
             else
@@ -181,17 +206,11 @@ namespace TutorialsArchiv
             }
         }
 
-        private TeachingResource GetCurrentlySelectedResource()
-        {
-            return teachingResourcesDGV.CurrentRow.DataBoundItem as TeachingResource;
-        }
-
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (_mode == UiMode.UserSelectedExistingResource)
+            if (_mode == UiMode.UserSelectedExistingResource || _mode == UiMode.UserEditsExistingResource)
             {
-                TeachingResource resource = GetCurrentlySelectedResource();
-                _allResources.Remove(resource);
+                _allResources.Remove(_activeResource);
                 _db.Save(_allResources);
                 RefreshDGV();
                 EnterInitMode();
