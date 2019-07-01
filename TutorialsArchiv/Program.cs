@@ -16,7 +16,9 @@ namespace TutorialsArchiv
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            MainForm form = new MainForm();
+            MainController controller = new MainController(form);
+            Application.Run(form);
         }
     }
 }

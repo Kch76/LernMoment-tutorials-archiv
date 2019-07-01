@@ -8,94 +8,140 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TutorialsArchiv.UiExtensions;
 
 namespace TutorialsArchiv
 {
     public partial class MainForm : Form
     {
-        private readonly FileDatabase _db = null;
-        private readonly List<TeachingResource> _allResources = null;
-
         public MainForm()
         {
             InitializeComponent();
-            _allResources = new List<TeachingResource>();
-            _db = new FileDatabase("file-database.csv");
+        }
+
+        public delegate void TeachingResourceHandler(TeachingResource resource);
+
+        public event TeachingResourceHandler ResourceSelected;
+        public event EventHandler ResourceEdited;
+        public event EventHandler ResourceEditCompleted;
+        public event EventHandler ResourceCreationRequested;
+        public event EventHandler ResourceDeletionRequested;
+        public event EventHandler Canceled;
+
+        public TeachingResource CurrentResource { get; private set; }
+
+        public void EnterInitMode()
+        {
+            cancelButton.Enabled = false;
+            deleteButton.Enabled = false;
+            updateButton.Enabled = false;
+            createButton.Enabled = true;
+
+            titelTextBox.Text = string.Empty;
+            urlTextBox.Text = string.Empty;
+
+            teachingResourcesDGV.Enable();
+        }
+
+        public void EnterSelectExistingMode(TeachingResource selectedResource)
+        {
+            deleteButton.Enabled = true;
+            cancelButton.Enabled = false;
+            updateButton.Enabled = false;
+
+            CurrentResource = selectedResource;
+            titelTextBox.Text = selectedResource.Title;
+            urlTextBox.Text = selectedResource.Url;
+
+            titelTextBox.Select();
+        }
+
+        public void EnterEditExistingMode()
+        {
+            deleteButton.Enabled = false;
+            createButton.Enabled = false;
+            cancelButton.Enabled = true;
+            updateButton.Enabled = true;
+
+            teachingResourcesDGV.Disable();
+        }
+
+        public void EnterEditNewMode(TeachingResource newResource)
+        {
+            createButton.Enabled = false;
+            deleteButton.Enabled = false;
+            cancelButton.Enabled = true;
+            updateButton.Enabled = true;
+
+            CurrentResource = newResource;
+            titelTextBox.Text = newResource.Title;
+            urlTextBox.Text = newResource.Url;
+
+            titelTextBox.Select();
+        }
+
+        public void HighlightLatestResource()
+        {
+            teachingResourcesDGV.CurrentCell = teachingResourcesDGV.Rows[teachingResourcesDGV.Rows.Count - 1].Cells[0];
+        }
+
+        public void UpdateResourceCollectionView(IEnumerable<TeachingResource> resources)
+        {
+            // HACK: JS, Our _allResources does currently not support data binding. Thus we need to improvise
+            teachingResourcesDGV.RowEnter -= new DataGridViewCellEventHandler(TeachingResourcesDGV_RowEnter);
+            teachingResourcesDGV.ClearSelection();
+            teachingResourcesDGV.DataSource = null;
+            teachingResourcesDGV.Rows.Clear();
+            teachingResourcesDGV.DataSource = resources;
+            teachingResourcesDGV.Refresh();
+            teachingResourcesDGV.RowEnter += new DataGridViewCellEventHandler(TeachingResourcesDGV_RowEnter);
+        }
+
+        public void ShowMessageToUser(string message)
+        {
+            MessageBox.Show(this, message);
+        }
+
+        private void RaiseEventWithEmptyArgs(EventHandler handler)
+        {
+            EventHandler theHandler = handler;
+            theHandler?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void AllTextBoxes_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            RaiseEventWithEmptyArgs(ResourceEdited);
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            _allResources.Add(new TeachingResource(titelTextBox.Text, urlTextBox.Text));
-            _db.Save(_allResources);
-            RefreshDGV();
-            ClearEntryUIElements();
-        }
-
-        private void ClearEntryUIElements()
-        {
-            createButton.Enabled = false;
-            createButton.Text = "Erstellt";
-
-            cancelButton.Enabled = false;
-            titelTextBox.Text = string.Empty;
-            urlTextBox.Text = string.Empty;
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            _allResources.AddRange(_db.LoadAllEntries());
-            RefreshDGV();
-            ClearEntryUIElements();
-        }
-
-        private void RefreshDGV()
-        {
-            // HACK: JS, Our _allResources does currently not support data binding. Thus we need to improvise
-            teachingResourcesDGV.DataSource = null;
-            teachingResourcesDGV.Rows.Clear();
-            teachingResourcesDGV.DataSource = _allResources;
-            teachingResourcesDGV.Refresh();
+            RaiseEventWithEmptyArgs(ResourceCreationRequested);
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            ClearEntryUIElements();
-        }
-
-        private void EnableEntryButtons(object sender, KeyPressEventArgs e)
-        {
-            createButton.Enabled = true;
-            createButton.Text = "Erstellen";
-            cancelButton.Enabled = true;
-        }
-
-        private void TeachingResourcesDGV_SelectionChanged(object sender, EventArgs e)
-        {
-            TeachingResource resource = GetCurrentlySelectedResource();
-            titelTextBox.Text = resource.Title;
-            urlTextBox.Text = resource.Url;
-        }
-
-        private TeachingResource GetCurrentlySelectedResource()
-        {
-            return teachingResourcesDGV.CurrentRow.DataBoundItem as TeachingResource;
+            RaiseEventWithEmptyArgs(Canceled);
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            TeachingResource resource = GetCurrentlySelectedResource();
-            _allResources.Remove(resource);
-            _db.Save(_allResources);
-            RefreshDGV();
+            RaiseEventWithEmptyArgs(ResourceDeletionRequested);
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            TeachingResource resource = GetCurrentlySelectedResource();
-            resource.Title = titelTextBox.Text;
-            resource.Url = urlTextBox.Text;
-            _db.Save(_allResources);
-            RefreshDGV();
+            CurrentResource.Title = titelTextBox.Text;
+            CurrentResource.Url = urlTextBox.Text;
+
+            RaiseEventWithEmptyArgs(ResourceEditCompleted);
+        }
+
+        private void TeachingResourcesDGV_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            TeachingResource selected = teachingResourcesDGV.Rows[e.RowIndex].DataBoundItem as TeachingResource;
+
+            TeachingResourceHandler handler = ResourceSelected;
+            handler?.Invoke(selected);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TutorialsArchiv
 {
-    class TeachingResource
+    public class TeachingResource
     {
         public string Title { get; set; }
         public string Url { get; set; }
