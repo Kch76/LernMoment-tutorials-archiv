@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TutorialsArchiv.UiExtensions;
 
 namespace TutorialsArchiv
 {
@@ -39,7 +40,7 @@ namespace TutorialsArchiv
             titelTextBox.Text = string.Empty;
             urlTextBox.Text = string.Empty;
 
-            EnableDgv(teachingResourcesDGV);
+            teachingResourcesDGV.Enable();
         }
 
         public void EnterSelectExistingMode(TeachingResource selectedResource)
@@ -62,7 +63,7 @@ namespace TutorialsArchiv
             cancelButton.Enabled = true;
             updateButton.Enabled = true;
 
-            DisableDgv(teachingResourcesDGV);
+            teachingResourcesDGV.Disable();
         }
 
         public void EnterEditNewMode(TeachingResource newResource)
@@ -142,29 +143,5 @@ namespace TutorialsArchiv
             TeachingResourceHandler handler = ResourceSelected;
             handler?.Invoke(selected);
         }
-
-        private static void DisableDgv(DataGridView dgv)
-        {
-            dgv.Enabled = false;
-            dgv.DefaultCellStyle.BackColor = SystemColors.Control;
-            dgv.DefaultCellStyle.ForeColor = SystemColors.GrayText;
-            dgv.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.Control;
-            dgv.ColumnHeadersDefaultCellStyle.ForeColor = SystemColors.GrayText;
-            dgv.CurrentCell = null;
-            dgv.ReadOnly = true;
-            dgv.EnableHeadersVisualStyles = false;
-        }
-
-        private static void EnableDgv(DataGridView dgv)
-        {
-            dgv.Enabled = true;
-            dgv.DefaultCellStyle.BackColor = SystemColors.Window;
-            dgv.DefaultCellStyle.ForeColor = SystemColors.ControlText;
-            dgv.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.Window;
-            dgv.ColumnHeadersDefaultCellStyle.ForeColor = SystemColors.ControlText;
-            dgv.ReadOnly = false;
-            dgv.EnableHeadersVisualStyles = true;
-        }
-
     }
 }

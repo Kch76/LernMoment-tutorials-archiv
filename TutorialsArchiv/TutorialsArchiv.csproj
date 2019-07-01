@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataGridViewExtensions.cs" />
     <Compile Include="FileDatabase.cs" />
     <Compile Include="MainController.cs" />
     <Compile Include="MainForm.cs">
