@@ -65,7 +65,7 @@ namespace TutorialsArchiv
             }
             else
             {
-                throw new InvalidOperationException($"UI ist im {_mode} Modus im dem editieren nicht erlaubt ist!");
+                throw new InvalidOperationException($"UI ist im {_mode} Modus in dem Editieren nicht erlaubt ist!");
             }
         }
 
@@ -80,7 +80,7 @@ namespace TutorialsArchiv
             }
             else
             {
-                throw new InvalidOperationException("UI ist nicht im Edit-Modus und somit kann dieser auch nicht angebrochen werden!");
+                throw new InvalidOperationException($"UI ist im {_mode} Modus und somit können Änderungen nicht übernommen werden!");
             }
 
         }
@@ -118,7 +118,7 @@ namespace TutorialsArchiv
             }
             else
             {
-                throw new InvalidOperationException("UI ist nicht im Resource-Ausgewählt-Modus! Nur darin kann gelöscht werden!");
+                throw new InvalidOperationException($"UI ist im {_mode} Modus! Darin kann nicht gelöscht werden!");
             }
         }
 
@@ -137,7 +137,7 @@ namespace TutorialsArchiv
             }
             else
             {
-                throw new InvalidOperationException("UI ist nicht im Init-Modus! Nur darin kann selektiert werden!");
+                throw new InvalidOperationException($"UI ist im {_mode} Modus! Darin kann nicht selektiert werden!");
             }
         }
 
@@ -157,7 +157,7 @@ namespace TutorialsArchiv
             }
             else
             {
-                throw new InvalidOperationException("UI ist nicht im Edit-Modus und somit kann dieser auch nicht angebrochen werden!");
+                throw new InvalidOperationException($"UI ist im {_mode} Modus. Darin kann nicht abgebrochen werden!");
             }
 
         }
