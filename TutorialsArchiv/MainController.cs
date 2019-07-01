@@ -138,9 +138,17 @@ namespace TutorialsArchiv
             {
                 _allResources.Remove(_activeResource);
                 _db.Save(_allResources);
-                _view.UpdateResourceCollectionView(_allResources);
 
-                EnterInitMode();
+                if (_allResources.Count == 0)
+                {
+                    _mode = EditingMode.EmptyDatabase;
+                    _view.EnterNoResourcesMode();
+                }
+                else
+                {
+                    _view.UpdateResourceCollectionView(_allResources);
+                    EnterInitMode();
+                }
             }
             else
             {
