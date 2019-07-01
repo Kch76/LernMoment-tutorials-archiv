@@ -66,7 +66,9 @@ namespace TutorialsArchiv
             createButton.Enabled = true;
 
             titelTextBox.Text = string.Empty;
+            titelTextBox.Enabled = false;
             urlTextBox.Text = string.Empty;
+            urlTextBox.Enabled = false;
 
             teachingResourcesDGV.Enable();
         }
@@ -78,8 +80,11 @@ namespace TutorialsArchiv
             updateButton.Enabled = false;
 
             CurrentResource = selectedResource;
+
             titelTextBox.Text = selectedResource.Title;
+            titelTextBox.Enabled = true;
             urlTextBox.Text = selectedResource.Url;
+            urlTextBox.Enabled = true;
 
             titelTextBox.Select();
         }
