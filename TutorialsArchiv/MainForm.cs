@@ -182,8 +182,16 @@ namespace TutorialsArchiv
             if (titelTextBox.Text.Contains(';'))
             {
                 e.Cancel = true;
-                titelTextBox.Select(0, titelTextBox.Text.Length);
-                
+                int index = titelTextBox.Text.IndexOf(';');
+                if (index < titelTextBox.Text.Length)
+                {
+                    titelTextBox.Select(index, 1);
+                }
+                else
+                {
+                    titelTextBox.Select(index - 1, 1);
+                }
+
                 errorProvider1.SetError(titelTextBox, "Der Titel darf kein Semikolon (;) enthalten!");
             }
         }
