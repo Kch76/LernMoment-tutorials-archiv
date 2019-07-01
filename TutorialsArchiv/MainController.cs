@@ -73,9 +73,6 @@ namespace TutorialsArchiv
         {
             if (_mode == EditingMode.UserEditsNewResource || _mode == EditingMode.UserEditsExistingResource)
             {
-                _activeResource.Title = _view.CurrentResourceTitle;
-                _activeResource.Url = _view.CurrentResourceUrl;
-
                 _db.Save(_allResources);
 
                 _view.UpdateResourceCollectionView(_allResources);

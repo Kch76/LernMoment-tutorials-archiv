@@ -27,8 +27,6 @@ namespace TutorialsArchiv
         public event EventHandler ResourceDeletionRequested;
         public event EventHandler Canceled;
 
-        public string CurrentResourceTitle { get; private set; }
-        public string CurrentResourceUrl { get; private set; }
         public TeachingResource CurrentResource { get; private set; }
 
         public void EnterInitMode()
@@ -131,8 +129,6 @@ namespace TutorialsArchiv
 
         private void UpdateButton_Click(object sender, EventArgs e)
         {
-            CurrentResourceTitle = titelTextBox.Text;
-            CurrentResourceUrl = urlTextBox.Text;
             CurrentResource.Title = titelTextBox.Text;
             CurrentResource.Url = urlTextBox.Text;
 
