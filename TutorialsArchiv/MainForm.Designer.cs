@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.urlLabel = new System.Windows.Forms.Label();
             this.urlTextBox = new System.Windows.Forms.TextBox();
             this.titelTextBox = new System.Windows.Forms.TextBox();
@@ -38,7 +39,9 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.emptyDgvLabel = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // urlLabel
@@ -68,6 +71,8 @@
             this.titelTextBox.Size = new System.Drawing.Size(642, 31);
             this.titelTextBox.TabIndex = 1;
             this.titelTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllTextBoxes_KeyPress);
+            this.titelTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TitelTextBox_Validating);
+            this.titelTextBox.Validated += new System.EventHandler(this.TitelTextBox_Validated);
             // 
             // titelLabel
             // 
@@ -150,6 +155,10 @@
             this.emptyDgvLabel.Text = "Füge deine erste Quelle (Lernmaterial) mithilfe des \"Hinzufügen\" Buttons (unten l" +
     "inks) ein!";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -169,6 +178,7 @@
             this.Name = "MainForm";
             this.Text = "Lernmaterial Finder";
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,6 +196,7 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Label emptyDgvLabel;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
 

@@ -176,5 +176,21 @@ namespace TutorialsArchiv
             TeachingResourceHandler handler = ResourceSelected;
             handler?.Invoke(selected);
         }
+
+        private void TitelTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (titelTextBox.Text.Contains(';'))
+            {
+                e.Cancel = true;
+                titelTextBox.Select(0, titelTextBox.Text.Length);
+                
+                errorProvider1.SetError(titelTextBox, "Der Titel darf kein Semikolon (;) enthalten!");
+            }
+        }
+
+        private void TitelTextBox_Validated(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(titelTextBox, "");
+        }
     }
 }
