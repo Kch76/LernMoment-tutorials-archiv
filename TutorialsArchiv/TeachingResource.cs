@@ -19,12 +19,12 @@ namespace TutorialsArchiv
 
         public string ToCsvLine()
         {
-            return $"{Title},{Url}";
+            return $"{Title};{Url}";
         }
 
         public static TeachingResource BuildFromCsvLine(string csvLine)
         {
-            string[] elements = csvLine.Split(',');
+            string[] elements = csvLine.Split(';');
             return new TeachingResource(elements[0], elements[1]);
         }
     }
