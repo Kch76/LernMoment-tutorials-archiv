@@ -30,6 +30,34 @@ namespace TutorialsArchiv
 
         public TeachingResource CurrentResource { get; private set; }
 
+        public void EnterNoResourcesMode()
+        {
+            cancelButton.Enabled = false;
+            deleteButton.Enabled = false;
+            updateButton.Enabled = false;
+            createButton.Enabled = true;
+
+            titelTextBox.Text = string.Empty;
+            titelTextBox.Enabled = false;
+            urlTextBox.Text = string.Empty;
+            urlTextBox.Enabled = false;
+
+            teachingResourcesDGV.Visible = false;
+        }
+
+        public void EnterFirstResourceEditMode()
+        {
+            titelTextBox.Enabled = true;
+            urlTextBox.Enabled = true;
+        }
+
+        public void LeaveNoResourcesMode()
+        {
+            EnterFirstResourceEditMode();
+
+            teachingResourcesDGV.Visible = true;
+        }
+
         public void EnterInitMode()
         {
             cancelButton.Enabled = false;

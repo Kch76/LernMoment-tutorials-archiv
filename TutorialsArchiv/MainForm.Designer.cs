@@ -37,6 +37,7 @@
             this.teachingResourcesDGV = new System.Windows.Forms.DataGridView();
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
+            this.emptyDgvLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +54,7 @@
             // urlTextBox
             // 
             this.urlTextBox.Location = new System.Drawing.Point(738, 115);
-            this.urlTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.urlTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.urlTextBox.Name = "urlTextBox";
             this.urlTextBox.Size = new System.Drawing.Size(642, 31);
             this.urlTextBox.TabIndex = 3;
@@ -62,7 +63,7 @@
             // titelTextBox
             // 
             this.titelTextBox.Location = new System.Drawing.Point(738, 65);
-            this.titelTextBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.titelTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.titelTextBox.Name = "titelTextBox";
             this.titelTextBox.Size = new System.Drawing.Size(642, 31);
             this.titelTextBox.TabIndex = 1;
@@ -81,7 +82,7 @@
             // createButton
             // 
             this.createButton.Location = new System.Drawing.Point(24, 660);
-            this.createButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.createButton.Margin = new System.Windows.Forms.Padding(6);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(180, 44);
             this.createButton.TabIndex = 4;
@@ -92,7 +93,7 @@
             // cancelButton
             // 
             this.cancelButton.Location = new System.Drawing.Point(1072, 588);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(6);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(150, 44);
             this.cancelButton.TabIndex = 5;
@@ -105,8 +106,8 @@
             this.teachingResourcesDGV.AllowUserToAddRows = false;
             this.teachingResourcesDGV.AllowUserToDeleteRows = false;
             this.teachingResourcesDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.teachingResourcesDGV.Location = new System.Drawing.Point(24, 23);
-            this.teachingResourcesDGV.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.teachingResourcesDGV.Location = new System.Drawing.Point(24, 22);
+            this.teachingResourcesDGV.Margin = new System.Windows.Forms.Padding(6);
             this.teachingResourcesDGV.Name = "teachingResourcesDGV";
             this.teachingResourcesDGV.ReadOnly = true;
             this.teachingResourcesDGV.RowHeadersWidth = 82;
@@ -118,7 +119,7 @@
             // deleteButton
             // 
             this.deleteButton.Location = new System.Drawing.Point(738, 588);
-            this.deleteButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.deleteButton.Margin = new System.Windows.Forms.Padding(6);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(150, 44);
             this.deleteButton.TabIndex = 7;
@@ -129,13 +130,25 @@
             // updateButton
             // 
             this.updateButton.Location = new System.Drawing.Point(1234, 588);
-            this.updateButton.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.updateButton.Margin = new System.Windows.Forms.Padding(6);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(150, 44);
             this.updateButton.TabIndex = 8;
             this.updateButton.Text = "Ändern";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            // 
+            // emptyDgvLabel
+            // 
+            this.emptyDgvLabel.BackColor = System.Drawing.Color.Silver;
+            this.emptyDgvLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.emptyDgvLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emptyDgvLabel.Location = new System.Drawing.Point(125, 228);
+            this.emptyDgvLabel.Name = "emptyDgvLabel";
+            this.emptyDgvLabel.Size = new System.Drawing.Size(294, 185);
+            this.emptyDgvLabel.TabIndex = 9;
+            this.emptyDgvLabel.Text = "Füge deine erste Quelle (Lernmaterial) mithilfe des \"Hinzufügen\" Buttons (unten l" +
+    "inks) ein!";
             // 
             // MainForm
             // 
@@ -151,7 +164,8 @@
             this.Controls.Add(this.titelLabel);
             this.Controls.Add(this.urlTextBox);
             this.Controls.Add(this.urlLabel);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Controls.Add(this.emptyDgvLabel);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MainForm";
             this.Text = "Lernmaterial Finder";
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).EndInit();
@@ -171,6 +185,7 @@
         private System.Windows.Forms.DataGridView teachingResourcesDGV;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button updateButton;
+        private System.Windows.Forms.Label emptyDgvLabel;
     }
 }
 
