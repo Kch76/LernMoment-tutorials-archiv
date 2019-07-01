@@ -50,6 +50,7 @@ namespace TutorialsArchiv
             _view.ResourceDeletionRequested += new EventHandler(ResourceGetsDeleted);
             _view.ResourceSelected += new MainForm.TeachingResourceHandler(ResourceGetsSelected);
             _view.Canceled += new EventHandler(CurrentActivityCanceled);
+            _view.FormCloseRequested += new MainForm.CloseFormHandler(FormGetsClosed);
         }
 
         private void ResourceGetsEdited(object sender, EventArgs args)
@@ -202,6 +203,27 @@ namespace TutorialsArchiv
                 throw new InvalidOperationException($"UI ist im {_mode} Modus. Darin kann nicht abgebrochen werden!");
             }
 
+        }
+
+        private void FormGetsClosed(object sender, CloseRequestedEventArgs args)
+        {
+            if (_mode == EditingMode.UserEditsExistingResource
+                || _mode == EditingMode.UserEditsFirstNewResource
+                || _mode == EditingMode.UserEditsNewResource)
+            {
+                if (_view.ShowOkCancelMessageToUser("Die Änderungen am aktuellen Datensatz gehen verloren."))
+                {
+                    args.ForceClose = true;
+                }
+                else
+                {
+                    args.ForceClose = false;
+                }
+            }
+            else
+            {
+                args.ForceClose = true;
+            }
         }
 
         private void EnterInitMode()

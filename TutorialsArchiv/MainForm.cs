@@ -12,6 +12,16 @@ using TutorialsArchiv.UiExtensions;
 
 namespace TutorialsArchiv
 {
+    public class CloseRequestedEventArgs : EventArgs
+    {
+        public CloseRequestedEventArgs()
+        {
+            ForceClose = true;
+        }
+
+        public bool ForceClose { get; set; }
+    }
+
     public partial class MainForm : Form
     {
         public MainForm()
@@ -20,6 +30,7 @@ namespace TutorialsArchiv
         }
 
         public delegate void TeachingResourceHandler(TeachingResource resource);
+        public delegate void CloseFormHandler(object sender, CloseRequestedEventArgs args);
 
         public event TeachingResourceHandler ResourceSelected;
         public event EventHandler ResourceEdited;
@@ -27,6 +38,7 @@ namespace TutorialsArchiv
         public event EventHandler ResourceCreationRequested;
         public event EventHandler ResourceDeletionRequested;
         public event EventHandler Canceled;
+        public event CloseFormHandler FormCloseRequested;
 
         public TeachingResource CurrentResource { get; private set; }
 
@@ -135,6 +147,12 @@ namespace TutorialsArchiv
             MessageBox.Show(this, message);
         }
 
+        public bool ShowOkCancelMessageToUser(string message)
+        {
+            DialogResult result = MessageBox.Show(this, message, "Frage", MessageBoxButtons.OKCancel);
+            return result == DialogResult.OK;
+        }
+
         private void RaiseEventWithEmptyArgs(EventHandler handler)
         {
             EventHandler theHandler = handler;
@@ -203,8 +221,20 @@ namespace TutorialsArchiv
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // close even if validation error exists
-            e.Cancel = false;
+            CloseFormHandler handler = FormCloseRequested;
+            CloseRequestedEventArgs args = new CloseRequestedEventArgs();
+            handler?.Invoke(this, args);
+
+            if (args.ForceClose)
+            {
+                // close even if validation error exists
+                e.Cancel = false;
+            }
+            else
+            {
+                // seems like user likes to save changes first!
+                e.Cancel = true;
+            }
         }
     }
 }
