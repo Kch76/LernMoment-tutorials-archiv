@@ -200,5 +200,11 @@ namespace TutorialsArchiv
         {
             errorProvider1.SetError(titelTextBox, "");
         }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // close even if validation error exists
+            e.Cancel = false;
+        }
     }
 }
