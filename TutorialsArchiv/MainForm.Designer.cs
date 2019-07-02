@@ -40,6 +40,7 @@
             this.updateButton = new System.Windows.Forms.Button();
             this.emptyDgvLabel = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -62,6 +63,7 @@
             this.urlTextBox.Size = new System.Drawing.Size(642, 31);
             this.urlTextBox.TabIndex = 3;
             this.urlTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllTextBoxes_KeyPress);
+            this.urlTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.UrlTextBox_Validating);
             // 
             // titelTextBox
             // 
@@ -198,6 +200,7 @@
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Label emptyDgvLabel;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

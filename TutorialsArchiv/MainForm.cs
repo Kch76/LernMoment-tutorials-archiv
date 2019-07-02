@@ -210,6 +210,18 @@ namespace TutorialsArchiv
             errorProvider1.SetError(titelTextBox, "");
         }
 
+        private void UrlTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            bool isUrlValid = Uri.TryCreate(urlTextBox.Text, UriKind.Absolute, out Uri uriResult)
+                && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+
+            if (urlTextBox.Enabled && !isUrlValid)
+            {
+                toolTip1.ToolTipTitle = "Ungültige URL";
+                toolTip1.Show("Es sind nur gültige URLs mit http oder https am Anfang erlaubt!", urlTextBox, 5000);
+            }
+        }
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             CloseFormHandler handler = FormCloseRequested;
@@ -227,5 +239,6 @@ namespace TutorialsArchiv
                 e.Cancel = true;
             }
         }
+
     }
 }
