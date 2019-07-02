@@ -39,10 +39,9 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.emptyDgvLabel = new System.Windows.Forms.Label();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.resourceEntryErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resourceEntryErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // urlLabel
@@ -160,7 +159,7 @@
             // 
             // errorProvider1
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.resourceEntryErrorProvider.ContainerControl = this;
             // 
             // MainForm
             // 
@@ -182,7 +181,7 @@
             this.Text = "Lernmaterial Finder";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resourceEntryErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,8 +199,7 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Label emptyDgvLabel;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ErrorProvider resourceEntryErrorProvider;
     }
 }
 

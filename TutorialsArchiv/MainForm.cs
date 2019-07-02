@@ -202,13 +202,13 @@ namespace TutorialsArchiv
                     titelTextBox.Select(index - 1, 1);
                 }
 
-                errorProvider1.SetError(titelTextBox, "Der Titel darf kein Semikolon (;) enthalten!");
+                resourceEntryErrorProvider.SetError(titelTextBox, "Der Titel darf kein Semikolon (;) enthalten!");
             }
         }
 
         private void TitelTextBox_Validated(object sender, EventArgs e)
         {
-            errorProvider1.SetError(titelTextBox, "");
+            resourceEntryErrorProvider.SetError(titelTextBox, "");
         }
 
         private void UrlTextBox_Validating(object sender, CancelEventArgs e)
@@ -220,13 +220,13 @@ namespace TutorialsArchiv
                 // Cancel following events e.g. Validated
                 e.Cancel = true;
 
-                errorProvider1.SetError(urlTextBox, "Es sind nur gültige URLs mit http oder https am Anfang erlaubt!");
+                resourceEntryErrorProvider.SetError(urlTextBox, "Es sind nur gültige URLs mit http oder https am Anfang erlaubt!");
             }
         }
 
         private void UrlTextBox_Validated(object sender, EventArgs e)
         {
-            errorProvider1.SetError(urlTextBox, "");
+            resourceEntryErrorProvider.SetError(urlTextBox, "");
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
