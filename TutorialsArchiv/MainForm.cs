@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TutorialsArchiv.UiExtensions;
@@ -212,6 +213,12 @@ namespace TutorialsArchiv
 
         private void UrlTextBox_Validating(object sender, CancelEventArgs e)
         {
+            bool containsProtocol = Regex.IsMatch(urlTextBox.Text, @"^https?:\/\/", RegexOptions.IgnoreCase);
+            if (!containsProtocol)
+            {
+                urlTextBox.Text = $"http://{urlTextBox.Text}";
+            }
+
             bool isUrlValid = Uri.TryCreate(urlTextBox.Text, UriKind.Absolute, out Uri uriResult)
                 && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
 
