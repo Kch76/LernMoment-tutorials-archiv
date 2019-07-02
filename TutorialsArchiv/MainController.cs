@@ -22,7 +22,7 @@ namespace TutorialsArchiv
         private readonly List<TeachingResource> _allResources = null;
         private EditingMode _mode = EditingMode.NothingSelected;
         private TeachingResource _activeResource = null;
-        private List<string> _invalidResourceProperties = new List<string>();
+        private readonly List<string> _invalidResourceProperties = new List<string>();
 
         private readonly MainForm _view = null;
 
@@ -80,13 +80,6 @@ namespace TutorialsArchiv
             {
                 throw new InvalidOperationException($"UI ist im {_mode} Modus in dem Editieren nicht erlaubt ist!");
             }
-        }
-
-        private bool IsUserEditing()
-        {
-            return _mode == EditingMode.UserEditsNewResource
-                            || _mode == EditingMode.UserEditsExistingResource
-                            || _mode == EditingMode.UserEditsFirstNewResource;
         }
 
         private void ResourceGetsUpdated(object sender, EventArgs args)
@@ -238,9 +231,7 @@ namespace TutorialsArchiv
 
         private void FormGetsClosed(object sender, CloseRequestedEventArgs args)
         {
-            if (_mode == EditingMode.UserEditsExistingResource
-                || _mode == EditingMode.UserEditsFirstNewResource
-                || _mode == EditingMode.UserEditsNewResource)
+            if (IsUserEditing())
             {
                 if (_view.ShowOkCancelMessageToUser("Die Änderungen am aktuellen Datensatz gehen verloren."))
                 {
@@ -262,6 +253,14 @@ namespace TutorialsArchiv
             _mode = EditingMode.NothingSelected;
             _view.EnterInitMode();
         }
+
+        private bool IsUserEditing()
+        {
+            return _mode == EditingMode.UserEditsNewResource
+                            || _mode == EditingMode.UserEditsExistingResource
+                            || _mode == EditingMode.UserEditsFirstNewResource;
+        }
+
 
     }
 }
