@@ -12,16 +12,6 @@ using TutorialsArchiv.UiExtensions;
 
 namespace TutorialsArchiv
 {
-    public class CloseRequestedEventArgs : EventArgs
-    {
-        public CloseRequestedEventArgs()
-        {
-            ForceClose = true;
-        }
-
-        public bool ForceClose { get; set; }
-    }
-
     public partial class MainForm : Form
     {
         public MainForm()
@@ -197,6 +187,7 @@ namespace TutorialsArchiv
 
         private void TitelTextBox_Validating(object sender, CancelEventArgs e)
         {
+            // TODO: JS, should validation go into Model?
             if (titelTextBox.Text.Contains(';'))
             {
                 e.Cancel = true;
