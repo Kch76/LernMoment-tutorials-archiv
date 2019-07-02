@@ -215,7 +215,7 @@ namespace TutorialsArchiv
         {
             bool isUrlValid = Regex.IsMatch(urlTextBox.Text, @"^http(s)?://([\w-]+.)+[\w-]+(/[\w- ./?%&=])?$", RegexOptions.IgnoreCase);
 
-            if (!isUrlValid)
+            if (urlTextBox.Enabled && !isUrlValid)
             {
                 // Cancel following events e.g. Validated
                 e.Cancel = true;
