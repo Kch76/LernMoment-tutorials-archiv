@@ -219,8 +219,7 @@ namespace TutorialsArchiv
                 urlTextBox.Text = $"http://{urlTextBox.Text}";
             }
 
-            bool isUrlValid = Uri.TryCreate(urlTextBox.Text, UriKind.Absolute, out Uri uriResult)
-                && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+            bool isUrlValid = Regex.IsMatch(urlTextBox.Text, @"^http(s)?://([\w-]+.)+[\w-]+(/[\w- ./?%&=])?$", RegexOptions.IgnoreCase);
 
             if (urlTextBox.Enabled && !isUrlValid)
             {
@@ -229,8 +228,10 @@ namespace TutorialsArchiv
 
                 toolTip1.ToolTipTitle = "Ungültige URL";
                 toolTip1.Show("Es sind nur gültige URLs mit http oder https am Anfang erlaubt!", urlTextBox, 5000);
+
                 urlTextBox.BackColor = Color.Red;
                 urlTextBox.ForeColor = Color.White;
+                urlTextBox.Select(0, urlTextBox.Text.Length);
             }
         }
 
