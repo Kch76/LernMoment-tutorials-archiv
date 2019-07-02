@@ -203,12 +203,17 @@ namespace TutorialsArchiv
                 }
 
                 resourceEntryErrorProvider.SetError(titelTextBox, "Der Titel darf kein Semikolon (;) enthalten!");
+                updateButton.Enabled = false;
             }
         }
 
         private void TitelTextBox_Validated(object sender, EventArgs e)
         {
             resourceEntryErrorProvider.SetError(titelTextBox, "");
+            if (!HasValidationError(urlTextBox))
+            {
+                updateButton.Enabled = true;
+            }
         }
 
         private void UrlTextBox_Validating(object sender, CancelEventArgs e)
@@ -221,12 +226,17 @@ namespace TutorialsArchiv
                 e.Cancel = true;
 
                 resourceEntryErrorProvider.SetError(urlTextBox, "Es sind nur gültige URLs mit http oder https am Anfang erlaubt!");
+                updateButton.Enabled = false;
             }
         }
 
         private void UrlTextBox_Validated(object sender, EventArgs e)
         {
             resourceEntryErrorProvider.SetError(urlTextBox, "");
+            if (!HasValidationError(titelTextBox))
+            {
+                updateButton.Enabled = true;
+            }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -245,6 +255,11 @@ namespace TutorialsArchiv
                 // seems like user likes to save changes first!
                 e.Cancel = true;
             }
+        }
+
+        private bool HasValidationError(Control ctrl)
+        {
+            return resourceEntryErrorProvider.GetError(ctrl) != string.Empty;
         }
 
     }
