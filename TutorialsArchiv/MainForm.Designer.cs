@@ -157,7 +157,7 @@
             this.emptyDgvLabel.Text = "Füge deine erste Quelle (Lernmaterial) mithilfe des \"Hinzufügen\" Buttons (unten l" +
     "inks) ein!";
             // 
-            // errorProvider1
+            // resourceEntryErrorProvider
             // 
             this.resourceEntryErrorProvider.ContainerControl = this;
             // 
@@ -165,6 +165,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(1442, 727);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.deleteButton);
