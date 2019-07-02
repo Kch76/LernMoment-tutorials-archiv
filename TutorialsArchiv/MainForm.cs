@@ -269,5 +269,10 @@ namespace TutorialsArchiv
             ValidationChangedEventArgs args = new ValidationChangedEventArgs(propertyName, isValid);
             handler?.Invoke(this, args);
         }
+
+        private void TeachingResourcesDGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            teachingResourcesDGV.Columns["Url"].Visible = false;
+        }
     }
 }

@@ -117,10 +117,12 @@
             this.teachingResourcesDGV.Margin = new System.Windows.Forms.Padding(6);
             this.teachingResourcesDGV.Name = "teachingResourcesDGV";
             this.teachingResourcesDGV.ReadOnly = true;
+            this.teachingResourcesDGV.RowHeadersVisible = false;
             this.teachingResourcesDGV.RowHeadersWidth = 82;
             this.teachingResourcesDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.teachingResourcesDGV.Size = new System.Drawing.Size(572, 610);
             this.teachingResourcesDGV.TabIndex = 6;
+            this.teachingResourcesDGV.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.TeachingResourcesDGV_DataBindingComplete);
             this.teachingResourcesDGV.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.TeachingResourcesDGV_RowEnter);
             // 
             // deleteButton
