@@ -112,6 +112,7 @@
             // 
             this.teachingResourcesDGV.AllowUserToAddRows = false;
             this.teachingResourcesDGV.AllowUserToDeleteRows = false;
+            this.teachingResourcesDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.teachingResourcesDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.teachingResourcesDGV.Location = new System.Drawing.Point(24, 22);
             this.teachingResourcesDGV.Margin = new System.Windows.Forms.Padding(6);
