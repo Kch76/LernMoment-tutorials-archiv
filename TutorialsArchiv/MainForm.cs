@@ -22,6 +22,7 @@ namespace TutorialsArchiv
 
         public delegate void TeachingResourceHandler(TeachingResource resource);
         public delegate void CloseFormHandler(object sender, CloseRequestedEventArgs args);
+        public delegate void ValidationChangedHandler(object sender, ValidationChangedEventArgs args);
 
         public event TeachingResourceHandler ResourceSelected;
         public event EventHandler ResourceEdited;
@@ -29,6 +30,7 @@ namespace TutorialsArchiv
         public event EventHandler ResourceCreationRequested;
         public event EventHandler ResourceDeletionRequested;
         public event EventHandler Canceled;
+        public event ValidationChangedHandler ValidationStateChanged;
         public event CloseFormHandler FormCloseRequested;
 
         public TeachingResource CurrentResource { get; private set; }
@@ -114,6 +116,16 @@ namespace TutorialsArchiv
             urlTextBox.Text = newResource.Url;
 
             titelTextBox.Select();
+        }
+
+        internal void EnterValidationFailedMode()
+        {
+            updateButton.Enabled = false;
+        }
+
+        public void LeaveValidationFailedMode()
+        {
+            updateButton.Enabled = true;
         }
 
         public void HighlightLatestResource()
@@ -203,17 +215,14 @@ namespace TutorialsArchiv
                 }
 
                 resourceEntryErrorProvider.SetError(titelTextBox, "Der Titel darf kein Semikolon (;) enthalten!");
-                updateButton.Enabled = false;
+                RaiseValidationChangedEvent("Title", false);
             }
         }
 
         private void TitelTextBox_Validated(object sender, EventArgs e)
         {
             resourceEntryErrorProvider.SetError(titelTextBox, "");
-            if (!HasValidationError(urlTextBox))
-            {
-                updateButton.Enabled = true;
-            }
+            RaiseValidationChangedEvent("Title", true);
         }
 
         private void UrlTextBox_Validating(object sender, CancelEventArgs e)
@@ -226,17 +235,14 @@ namespace TutorialsArchiv
                 e.Cancel = true;
 
                 resourceEntryErrorProvider.SetError(urlTextBox, "Es sind nur gültige URLs mit http oder https am Anfang erlaubt!");
-                updateButton.Enabled = false;
+                RaiseValidationChangedEvent("Url", false);
             }
         }
 
         private void UrlTextBox_Validated(object sender, EventArgs e)
         {
             resourceEntryErrorProvider.SetError(urlTextBox, "");
-            if (!HasValidationError(titelTextBox))
-            {
-                updateButton.Enabled = true;
-            }
+            RaiseValidationChangedEvent("Url", true);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -257,10 +263,11 @@ namespace TutorialsArchiv
             }
         }
 
-        private bool HasValidationError(Control ctrl)
+        private void RaiseValidationChangedEvent(string propertyName, bool isValid)
         {
-            return resourceEntryErrorProvider.GetError(ctrl) != string.Empty;
+            ValidationChangedHandler handler = ValidationStateChanged;
+            ValidationChangedEventArgs args = new ValidationChangedEventArgs(propertyName, isValid);
+            handler?.Invoke(this, args);
         }
-
     }
 }
