@@ -64,6 +64,7 @@
             this.urlTextBox.TabIndex = 3;
             this.urlTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllTextBoxes_KeyPress);
             this.urlTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.UrlTextBox_Validating);
+            this.urlTextBox.Validated += new System.EventHandler(this.UrlTextBox_Validated);
             // 
             // titelTextBox
             // 

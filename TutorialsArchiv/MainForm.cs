@@ -217,9 +217,20 @@ namespace TutorialsArchiv
 
             if (urlTextBox.Enabled && !isUrlValid)
             {
+                // Cancel following events e.g. Validated
+                e.Cancel = true;
+
                 toolTip1.ToolTipTitle = "Ungültige URL";
                 toolTip1.Show("Es sind nur gültige URLs mit http oder https am Anfang erlaubt!", urlTextBox, 5000);
+                urlTextBox.BackColor = Color.Red;
+                urlTextBox.ForeColor = Color.White;
             }
+        }
+
+        private void UrlTextBox_Validated(object sender, EventArgs e)
+        {
+            urlTextBox.BackColor = SystemColors.Window;
+            urlTextBox.ForeColor = SystemColors.WindowText;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
