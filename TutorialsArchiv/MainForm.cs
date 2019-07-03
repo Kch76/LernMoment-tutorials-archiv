@@ -35,6 +35,12 @@ namespace TutorialsArchiv
 
         public TeachingResource CurrentResource { get; private set; }
 
+        public void SetupUI()
+        {
+            teachingResourcesDGV.ColumnCount = 1;
+            teachingResourcesDGV.Columns[0].Name = "Titel";
+        }
+
         public void EnterNoResourcesMode()
         {
             cancelButton.Enabled = false;
@@ -138,9 +144,12 @@ namespace TutorialsArchiv
             // HACK: JS, Our _allResources does currently not support data binding. Thus we need to improvise
             teachingResourcesDGV.RowEnter -= new DataGridViewCellEventHandler(TeachingResourcesDGV_RowEnter);
             teachingResourcesDGV.ClearSelection();
-            teachingResourcesDGV.DataSource = null;
             teachingResourcesDGV.Rows.Clear();
-            teachingResourcesDGV.DataSource = resources;
+            foreach (var item in resources)
+            {
+                teachingResourcesDGV.Rows.Add(item.Title);
+                teachingResourcesDGV.Rows[teachingResourcesDGV.RowCount - 1].Tag = item;
+            }
             teachingResourcesDGV.Refresh();
             teachingResourcesDGV.RowEnter += new DataGridViewCellEventHandler(TeachingResourcesDGV_RowEnter);
         }
@@ -192,7 +201,7 @@ namespace TutorialsArchiv
 
         private void TeachingResourcesDGV_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            TeachingResource selected = teachingResourcesDGV.Rows[e.RowIndex].DataBoundItem as TeachingResource;
+            TeachingResource selected = teachingResourcesDGV.Rows[e.RowIndex].Tag as TeachingResource;
 
             TeachingResourceHandler handler = ResourceSelected;
             handler?.Invoke(selected);

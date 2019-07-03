@@ -34,6 +34,8 @@ namespace TutorialsArchiv
 
             _allResources.AddRange(_db.LoadAllEntries());
 
+            _view.SetupUI();
+
             if (_allResources.Count == 0)
             {
                 _mode = EditingMode.EmptyDatabase;
@@ -159,6 +161,11 @@ namespace TutorialsArchiv
 
         private void ResourceGetsSelected(TeachingResource selectedResource)
         {
+            if (selectedResource==null)
+            {
+                return;
+            }
+
             if (_mode == EditingMode.NothingSelected || _mode == EditingMode.UserSelectedExistingResource)
             {
                 _mode = EditingMode.UserSelectedExistingResource;
