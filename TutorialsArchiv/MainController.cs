@@ -116,7 +116,7 @@ namespace TutorialsArchiv
                 return;
             }
 
-            TeachingResource newResource = new TeachingResource("Neue Ressource", "Bitte ausfüllen", "Buch");
+            TeachingResource newResource = new TeachingResource("Neue Ressource", "Bitte ausfüllen", MediumType.Buch);
             _activeResource = newResource;
             _allResources.Add(newResource);
 

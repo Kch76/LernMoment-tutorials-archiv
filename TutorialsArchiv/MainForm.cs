@@ -41,11 +41,7 @@ namespace TutorialsArchiv
             teachingResourcesDGV.Columns[0].Name = "Titel";
             teachingResourcesDGV.Columns[1].Name = "Url";
 
-            mediumComboBox.Items.Add("Buch");
-            mediumComboBox.Items.Add("Video");
-            mediumComboBox.Items.Add("Artikel");
-            mediumComboBox.Items.Add("Kurs");
-            mediumComboBox.Items.Add("Podcast");
+            mediumComboBox.DataSource = Enum.GetValues(typeof(MediumType));
         }
 
         public void EnterNoResourcesMode()
@@ -198,7 +194,7 @@ namespace TutorialsArchiv
 
         private void MediumComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (CurrentResource.Medium != mediumComboBox.SelectedItem as string)
+            if (CurrentResource.Medium != (MediumType) mediumComboBox.SelectedItem)
             {
                 RaiseEventWithEmptyArgs(ResourceEdited);
             }
@@ -223,7 +219,7 @@ namespace TutorialsArchiv
         {
             CurrentResource.Title = titelTextBox.Text;
             CurrentResource.Url = urlTextBox.Text;
-            CurrentResource.Medium = mediumComboBox.SelectedItem as string;
+            CurrentResource.Medium = (MediumType) mediumComboBox.SelectedItem;
 
             RaiseEventWithEmptyArgs(ResourceEditCompleted);
         }
