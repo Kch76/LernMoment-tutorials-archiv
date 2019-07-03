@@ -119,7 +119,9 @@ namespace TutorialsArchiv
 
             CurrentResource = newResource;
             titelTextBox.Text = newResource.Title;
+            titelTextBox.Enabled = true;
             urlTextBox.Text = newResource.Url;
+            urlTextBox.Enabled = true;
 
             titelTextBox.Select();
         }

@@ -123,7 +123,6 @@ namespace TutorialsArchiv
             if (_mode == EditingMode.EmptyDatabase)
             {
                 _mode = EditingMode.UserEditsFirstNewResource;
-                _view.EnterFirstResourceEditMode();
             }
             else
             {
