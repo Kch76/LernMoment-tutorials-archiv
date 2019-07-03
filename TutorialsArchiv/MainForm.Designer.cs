@@ -49,19 +49,17 @@
             // urlLabel
             // 
             this.urlLabel.AutoSize = true;
-            this.urlLabel.Location = new System.Drawing.Point(662, 121);
-            this.urlLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.urlLabel.Location = new System.Drawing.Point(331, 63);
             this.urlLabel.Name = "urlLabel";
-            this.urlLabel.Size = new System.Drawing.Size(60, 25);
+            this.urlLabel.Size = new System.Drawing.Size(32, 13);
             this.urlLabel.TabIndex = 0;
             this.urlLabel.Text = "URL:";
             // 
             // urlTextBox
             // 
-            this.urlTextBox.Location = new System.Drawing.Point(756, 118);
-            this.urlTextBox.Margin = new System.Windows.Forms.Padding(6);
+            this.urlTextBox.Location = new System.Drawing.Point(378, 61);
             this.urlTextBox.Name = "urlTextBox";
-            this.urlTextBox.Size = new System.Drawing.Size(642, 31);
+            this.urlTextBox.Size = new System.Drawing.Size(323, 20);
             this.urlTextBox.TabIndex = 3;
             this.urlTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllTextBoxes_KeyPress);
             this.urlTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.UrlTextBox_Validating);
@@ -69,10 +67,9 @@
             // 
             // titelTextBox
             // 
-            this.titelTextBox.Location = new System.Drawing.Point(756, 68);
-            this.titelTextBox.Margin = new System.Windows.Forms.Padding(6);
+            this.titelTextBox.Location = new System.Drawing.Point(378, 35);
             this.titelTextBox.Name = "titelTextBox";
-            this.titelTextBox.Size = new System.Drawing.Size(642, 31);
+            this.titelTextBox.Size = new System.Drawing.Size(323, 20);
             this.titelTextBox.TabIndex = 1;
             this.titelTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllTextBoxes_KeyPress);
             this.titelTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TitelTextBox_Validating);
@@ -81,19 +78,17 @@
             // titelLabel
             // 
             this.titelLabel.AutoSize = true;
-            this.titelLabel.Location = new System.Drawing.Point(662, 71);
-            this.titelLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.titelLabel.Location = new System.Drawing.Point(331, 37);
             this.titelLabel.Name = "titelLabel";
-            this.titelLabel.Size = new System.Drawing.Size(59, 25);
+            this.titelLabel.Size = new System.Drawing.Size(30, 13);
             this.titelLabel.TabIndex = 2;
             this.titelLabel.Text = "Titel:";
             // 
             // createButton
             // 
-            this.createButton.Location = new System.Drawing.Point(24, 660);
-            this.createButton.Margin = new System.Windows.Forms.Padding(6);
+            this.createButton.Location = new System.Drawing.Point(12, 343);
             this.createButton.Name = "createButton";
-            this.createButton.Size = new System.Drawing.Size(180, 44);
+            this.createButton.Size = new System.Drawing.Size(90, 23);
             this.createButton.TabIndex = 4;
             this.createButton.Text = "Hinzufügen";
             this.createButton.UseVisualStyleBackColor = true;
@@ -101,10 +96,9 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(1072, 588);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(6);
+            this.cancelButton.Location = new System.Drawing.Point(536, 306);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(150, 44);
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 5;
             this.cancelButton.Text = "Verwerfen";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -116,24 +110,22 @@
             this.teachingResourcesDGV.AllowUserToDeleteRows = false;
             this.teachingResourcesDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.teachingResourcesDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.teachingResourcesDGV.Location = new System.Drawing.Point(24, 22);
-            this.teachingResourcesDGV.Margin = new System.Windows.Forms.Padding(6);
+            this.teachingResourcesDGV.Location = new System.Drawing.Point(12, 11);
             this.teachingResourcesDGV.Name = "teachingResourcesDGV";
             this.teachingResourcesDGV.ReadOnly = true;
             this.teachingResourcesDGV.RowHeadersVisible = false;
             this.teachingResourcesDGV.RowHeadersWidth = 82;
             this.teachingResourcesDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.teachingResourcesDGV.Size = new System.Drawing.Size(572, 610);
+            this.teachingResourcesDGV.Size = new System.Drawing.Size(286, 317);
             this.teachingResourcesDGV.TabIndex = 6;
             this.teachingResourcesDGV.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.TeachingResourcesDGV_DataBindingComplete);
             this.teachingResourcesDGV.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.TeachingResourcesDGV_RowEnter);
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(738, 588);
-            this.deleteButton.Margin = new System.Windows.Forms.Padding(6);
+            this.deleteButton.Location = new System.Drawing.Point(369, 306);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(150, 44);
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 7;
             this.deleteButton.Text = "Entfernen";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -141,10 +133,9 @@
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(1234, 588);
-            this.updateButton.Margin = new System.Windows.Forms.Padding(6);
+            this.updateButton.Location = new System.Drawing.Point(617, 306);
             this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(150, 44);
+            this.updateButton.Size = new System.Drawing.Size(75, 23);
             this.updateButton.TabIndex = 8;
             this.updateButton.Text = "Ändern";
             this.updateButton.UseVisualStyleBackColor = true;
@@ -155,9 +146,10 @@
             this.emptyDgvLabel.BackColor = System.Drawing.Color.Silver;
             this.emptyDgvLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.emptyDgvLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emptyDgvLabel.Location = new System.Drawing.Point(125, 228);
+            this.emptyDgvLabel.Location = new System.Drawing.Point(62, 119);
+            this.emptyDgvLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.emptyDgvLabel.Name = "emptyDgvLabel";
-            this.emptyDgvLabel.Size = new System.Drawing.Size(294, 185);
+            this.emptyDgvLabel.Size = new System.Drawing.Size(148, 97);
             this.emptyDgvLabel.TabIndex = 9;
             this.emptyDgvLabel.Text = "Füge deine erste Quelle (Lernmaterial) mithilfe des \"Hinzufügen\" Buttons (unten l" +
     "inks) ein!";
@@ -169,26 +161,29 @@
             // mediumLabel
             // 
             this.mediumLabel.AutoSize = true;
-            this.mediumLabel.Location = new System.Drawing.Point(662, 172);
+            this.mediumLabel.Location = new System.Drawing.Point(331, 89);
+            this.mediumLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.mediumLabel.Name = "mediumLabel";
-            this.mediumLabel.Size = new System.Drawing.Size(94, 25);
+            this.mediumLabel.Size = new System.Drawing.Size(47, 13);
             this.mediumLabel.TabIndex = 10;
             this.mediumLabel.Text = "Medium:";
             // 
             // mediumComboBox
             // 
+            this.mediumComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.mediumComboBox.FormattingEnabled = true;
-            this.mediumComboBox.Location = new System.Drawing.Point(756, 169);
+            this.mediumComboBox.Location = new System.Drawing.Point(378, 88);
+            this.mediumComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.mediumComboBox.Name = "mediumComboBox";
-            this.mediumComboBox.Size = new System.Drawing.Size(359, 33);
+            this.mediumComboBox.Size = new System.Drawing.Size(182, 21);
             this.mediumComboBox.TabIndex = 11;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(1442, 727);
+            this.ClientSize = new System.Drawing.Size(721, 378);
             this.Controls.Add(this.mediumComboBox);
             this.Controls.Add(this.mediumLabel);
             this.Controls.Add(this.updateButton);
@@ -201,7 +196,6 @@
             this.Controls.Add(this.urlTextBox);
             this.Controls.Add(this.urlLabel);
             this.Controls.Add(this.emptyDgvLabel);
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MainForm";
             this.Text = "Lernmaterial Finder";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
