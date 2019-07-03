@@ -40,6 +40,12 @@ namespace TutorialsArchiv
             teachingResourcesDGV.ColumnCount = 2;
             teachingResourcesDGV.Columns[0].Name = "Titel";
             teachingResourcesDGV.Columns[1].Name = "Url";
+
+            mediumComboBox.Items.Add("Buch");
+            mediumComboBox.Items.Add("Video");
+            mediumComboBox.Items.Add("Artikel");
+            mediumComboBox.Items.Add("Kurs");
+            mediumComboBox.Items.Add("Podcast");
         }
 
         public void EnterNoResourcesMode()
@@ -97,6 +103,7 @@ namespace TutorialsArchiv
             titelTextBox.Enabled = true;
             urlTextBox.Text = selectedResource.Url;
             urlTextBox.Enabled = true;
+            mediumComboBox.SelectedItem = selectedResource.Medium;
 
             titelTextBox.Select();
         }
@@ -123,6 +130,7 @@ namespace TutorialsArchiv
             titelTextBox.Enabled = true;
             urlTextBox.Text = newResource.Url;
             urlTextBox.Enabled = true;
+            mediumComboBox.SelectedItem = newResource.Medium;
 
             titelTextBox.Select();
         }
@@ -201,6 +209,7 @@ namespace TutorialsArchiv
         {
             CurrentResource.Title = titelTextBox.Text;
             CurrentResource.Url = urlTextBox.Text;
+            CurrentResource.Medium = mediumComboBox.SelectedItem as string;
 
             RaiseEventWithEmptyArgs(ResourceEditCompleted);
         }

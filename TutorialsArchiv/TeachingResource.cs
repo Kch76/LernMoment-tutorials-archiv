@@ -10,22 +10,24 @@ namespace TutorialsArchiv
     {
         public string Title { get; set; }
         public string Url { get; set; }
+        public string Medium { get; set; }
 
-        public TeachingResource(string theTitle, string theUrl)
+        public TeachingResource(string theTitle, string theUrl, string theMedium)
         {
             Title = theTitle;
             Url = theUrl;
+            Medium = theMedium;
         }
 
         public string ToCsvLine()
         {
-            return $"{Title};{Url}";
+            return $"{Title};{Url};{Medium}";
         }
 
         public static TeachingResource BuildFromCsvLine(string csvLine)
         {
             string[] elements = csvLine.Split(';');
-            return new TeachingResource(elements[0], elements[1]);
+            return new TeachingResource(elements[0], elements[1], elements[2]);
         }
     }
 }

@@ -40,6 +40,8 @@
             this.updateButton = new System.Windows.Forms.Button();
             this.emptyDgvLabel = new System.Windows.Forms.Label();
             this.resourceEntryErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.mediumLabel = new System.Windows.Forms.Label();
+            this.mediumComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resourceEntryErrorProvider)).BeginInit();
             this.SuspendLayout();
@@ -56,7 +58,7 @@
             // 
             // urlTextBox
             // 
-            this.urlTextBox.Location = new System.Drawing.Point(738, 115);
+            this.urlTextBox.Location = new System.Drawing.Point(756, 118);
             this.urlTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.urlTextBox.Name = "urlTextBox";
             this.urlTextBox.Size = new System.Drawing.Size(642, 31);
@@ -67,7 +69,7 @@
             // 
             // titelTextBox
             // 
-            this.titelTextBox.Location = new System.Drawing.Point(738, 65);
+            this.titelTextBox.Location = new System.Drawing.Point(756, 68);
             this.titelTextBox.Margin = new System.Windows.Forms.Padding(6);
             this.titelTextBox.Name = "titelTextBox";
             this.titelTextBox.Size = new System.Drawing.Size(642, 31);
@@ -164,12 +166,31 @@
             // 
             this.resourceEntryErrorProvider.ContainerControl = this;
             // 
+            // mediumLabel
+            // 
+            this.mediumLabel.AutoSize = true;
+            this.mediumLabel.Location = new System.Drawing.Point(662, 172);
+            this.mediumLabel.Name = "mediumLabel";
+            this.mediumLabel.Size = new System.Drawing.Size(94, 25);
+            this.mediumLabel.TabIndex = 10;
+            this.mediumLabel.Text = "Medium:";
+            // 
+            // mediumComboBox
+            // 
+            this.mediumComboBox.FormattingEnabled = true;
+            this.mediumComboBox.Location = new System.Drawing.Point(756, 169);
+            this.mediumComboBox.Name = "mediumComboBox";
+            this.mediumComboBox.Size = new System.Drawing.Size(359, 33);
+            this.mediumComboBox.TabIndex = 11;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(1442, 727);
+            this.Controls.Add(this.mediumComboBox);
+            this.Controls.Add(this.mediumLabel);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.teachingResourcesDGV);
@@ -204,6 +225,8 @@
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Label emptyDgvLabel;
         private System.Windows.Forms.ErrorProvider resourceEntryErrorProvider;
+        private System.Windows.Forms.ComboBox mediumComboBox;
+        private System.Windows.Forms.Label mediumLabel;
     }
 }
 
