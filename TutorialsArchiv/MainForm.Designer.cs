@@ -177,6 +177,7 @@
             this.mediumComboBox.Name = "mediumComboBox";
             this.mediumComboBox.Size = new System.Drawing.Size(182, 21);
             this.mediumComboBox.TabIndex = 11;
+            this.mediumComboBox.SelectionChangeCommitted += new System.EventHandler(this.MediumComboBox_SelectionChangeCommitted);
             // 
             // MainForm
             // 

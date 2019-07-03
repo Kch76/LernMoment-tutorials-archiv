@@ -196,6 +196,14 @@ namespace TutorialsArchiv
             RaiseEventWithEmptyArgs(ResourceEdited);
         }
 
+        private void MediumComboBox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (CurrentResource.Medium != mediumComboBox.SelectedItem as string)
+            {
+                RaiseEventWithEmptyArgs(ResourceEdited);
+            }
+        }
+
         private void CreateButton_Click(object sender, EventArgs e)
         {
             RaiseEventWithEmptyArgs(ResourceCreationRequested);
@@ -304,5 +312,6 @@ namespace TutorialsArchiv
         {
             teachingResourcesDGV.Columns["Url"].Visible = false;
         }
+
     }
 }
