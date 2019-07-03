@@ -22,6 +22,7 @@ namespace TutorialsArchiv
         private readonly List<TeachingResource> _allResources = null;
         private EditingMode _mode = EditingMode.NothingSelected;
         private TeachingResource _activeResource = null;
+        private readonly List<string> _invalidResourceProperties = new List<string>();
 
         private readonly MainForm _view = null;
 
@@ -50,14 +51,14 @@ namespace TutorialsArchiv
             _view.ResourceDeletionRequested += new EventHandler(ResourceGetsDeleted);
             _view.ResourceSelected += new MainForm.TeachingResourceHandler(ResourceGetsSelected);
             _view.Canceled += new EventHandler(CurrentActivityCanceled);
+            _view.ValidationStateChanged += new MainForm.ValidationChangedHandler(ResourceValidationChanged);
+            _view.FormCloseRequested += new MainForm.CloseFormHandler(FormGetsClosed);
         }
 
         private void ResourceGetsEdited(object sender, EventArgs args)
         {
             // editing a new Resource is different than editing an existing Resource
-            if (_mode == EditingMode.UserEditsNewResource 
-                || _mode == EditingMode.UserEditsExistingResource
-                || _mode == EditingMode.UserEditsFirstNewResource)
+            if (IsUserEditing())
             {
                 // editing allowed without further intervention
                 return;
@@ -175,6 +176,30 @@ namespace TutorialsArchiv
             }
         }
 
+        private void ResourceValidationChanged(object sender, ValidationChangedEventArgs args)
+        {
+            if (args.IsValid)
+            {
+                _invalidResourceProperties.Remove(args.PropertyName);
+            }
+            else
+            {
+                _invalidResourceProperties.Add(args.PropertyName);
+            }
+
+            if (IsUserEditing())
+            {
+                if (_invalidResourceProperties.Count == 0)
+                {
+                    _view.LeaveValidationFailedMode();
+                }
+                else
+                {
+                    _view.EnterValidationFailedMode();
+                }
+            }
+        }
+
         private void CurrentActivityCanceled(object sender, EventArgs args)
         {
             if (_mode == EditingMode.UserEditsNewResource)
@@ -204,11 +229,38 @@ namespace TutorialsArchiv
 
         }
 
+        private void FormGetsClosed(object sender, CloseRequestedEventArgs args)
+        {
+            if (IsUserEditing())
+            {
+                if (_view.ShowOkCancelMessageToUser("Die Änderungen am aktuellen Datensatz gehen verloren."))
+                {
+                    args.ForceClose = true;
+                }
+                else
+                {
+                    args.ForceClose = false;
+                }
+            }
+            else
+            {
+                args.ForceClose = true;
+            }
+        }
+
         private void EnterInitMode()
         {
             _mode = EditingMode.NothingSelected;
             _view.EnterInitMode();
         }
+
+        private bool IsUserEditing()
+        {
+            return _mode == EditingMode.UserEditsNewResource
+                            || _mode == EditingMode.UserEditsExistingResource
+                            || _mode == EditingMode.UserEditsFirstNewResource;
+        }
+
 
     }
 }

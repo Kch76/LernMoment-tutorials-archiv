@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.urlLabel = new System.Windows.Forms.Label();
             this.urlTextBox = new System.Windows.Forms.TextBox();
             this.titelTextBox = new System.Windows.Forms.TextBox();
@@ -38,7 +39,9 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.emptyDgvLabel = new System.Windows.Forms.Label();
+            this.resourceEntryErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resourceEntryErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // urlLabel
@@ -59,6 +62,8 @@
             this.urlTextBox.Size = new System.Drawing.Size(642, 31);
             this.urlTextBox.TabIndex = 3;
             this.urlTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllTextBoxes_KeyPress);
+            this.urlTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.UrlTextBox_Validating);
+            this.urlTextBox.Validated += new System.EventHandler(this.UrlTextBox_Validated);
             // 
             // titelTextBox
             // 
@@ -68,6 +73,8 @@
             this.titelTextBox.Size = new System.Drawing.Size(642, 31);
             this.titelTextBox.TabIndex = 1;
             this.titelTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllTextBoxes_KeyPress);
+            this.titelTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TitelTextBox_Validating);
+            this.titelTextBox.Validated += new System.EventHandler(this.TitelTextBox_Validated);
             // 
             // titelLabel
             // 
@@ -105,15 +112,18 @@
             // 
             this.teachingResourcesDGV.AllowUserToAddRows = false;
             this.teachingResourcesDGV.AllowUserToDeleteRows = false;
+            this.teachingResourcesDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.teachingResourcesDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.teachingResourcesDGV.Location = new System.Drawing.Point(24, 22);
             this.teachingResourcesDGV.Margin = new System.Windows.Forms.Padding(6);
             this.teachingResourcesDGV.Name = "teachingResourcesDGV";
             this.teachingResourcesDGV.ReadOnly = true;
+            this.teachingResourcesDGV.RowHeadersVisible = false;
             this.teachingResourcesDGV.RowHeadersWidth = 82;
             this.teachingResourcesDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.teachingResourcesDGV.Size = new System.Drawing.Size(572, 610);
             this.teachingResourcesDGV.TabIndex = 6;
+            this.teachingResourcesDGV.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.TeachingResourcesDGV_DataBindingComplete);
             this.teachingResourcesDGV.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.TeachingResourcesDGV_RowEnter);
             // 
             // deleteButton
@@ -150,10 +160,15 @@
             this.emptyDgvLabel.Text = "Füge deine erste Quelle (Lernmaterial) mithilfe des \"Hinzufügen\" Buttons (unten l" +
     "inks) ein!";
             // 
+            // resourceEntryErrorProvider
+            // 
+            this.resourceEntryErrorProvider.ContainerControl = this;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(1442, 727);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.deleteButton);
@@ -168,7 +183,9 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MainForm";
             this.Text = "Lernmaterial Finder";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resourceEntryErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,6 +203,7 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Label emptyDgvLabel;
+        private System.Windows.Forms.ErrorProvider resourceEntryErrorProvider;
     }
 }
 
