@@ -147,12 +147,17 @@ namespace TutorialsArchiv
             teachingResourcesDGV.RowEnter -= new DataGridViewCellEventHandler(TeachingResourcesDGV_RowEnter);
             teachingResourcesDGV.ClearSelection();
             teachingResourcesDGV.Rows.Clear();
+            AddAsRowsToDgv(resources);
+            teachingResourcesDGV.RowEnter += new DataGridViewCellEventHandler(TeachingResourcesDGV_RowEnter);
+        }
+
+        private void AddAsRowsToDgv(IEnumerable<TeachingResource> resources)
+        {
             foreach (var item in resources)
             {
                 teachingResourcesDGV.Rows.Add(item.Title, item.Url);
                 teachingResourcesDGV.Rows[teachingResourcesDGV.RowCount - 1].Tag = item;
             }
-            teachingResourcesDGV.RowEnter += new DataGridViewCellEventHandler(TeachingResourcesDGV_RowEnter);
         }
 
         public void ShowMessageToUser(string message)
