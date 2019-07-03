@@ -59,6 +59,8 @@ namespace TutorialsArchiv
             titelTextBox.Enabled = false;
             urlTextBox.Text = string.Empty;
             urlTextBox.Enabled = false;
+            mediumComboBox.SelectedIndex = -1;
+            mediumComboBox.Enabled = false;
 
             teachingResourcesDGV.Visible = false;
         }
@@ -67,6 +69,7 @@ namespace TutorialsArchiv
         {
             titelTextBox.Enabled = true;
             urlTextBox.Enabled = true;
+            mediumComboBox.Enabled = true;
         }
 
         public void LeaveNoResourcesMode()
@@ -87,6 +90,8 @@ namespace TutorialsArchiv
             titelTextBox.Enabled = false;
             urlTextBox.Text = string.Empty;
             urlTextBox.Enabled = false;
+            mediumComboBox.SelectedIndex = -1;
+            mediumComboBox.Enabled = false;
 
             teachingResourcesDGV.Enable();
         }
@@ -104,6 +109,7 @@ namespace TutorialsArchiv
             urlTextBox.Text = selectedResource.Url;
             urlTextBox.Enabled = true;
             mediumComboBox.SelectedItem = selectedResource.Medium;
+            mediumComboBox.Enabled = true;
 
             titelTextBox.Select();
         }
@@ -131,6 +137,7 @@ namespace TutorialsArchiv
             urlTextBox.Text = newResource.Url;
             urlTextBox.Enabled = true;
             mediumComboBox.SelectedItem = newResource.Medium;
+            mediumComboBox.Enabled = true;
 
             titelTextBox.Select();
         }
