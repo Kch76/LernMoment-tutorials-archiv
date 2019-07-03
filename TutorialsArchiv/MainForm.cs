@@ -144,7 +144,6 @@ namespace TutorialsArchiv
 
         public void UpdateResourceCollectionView(IEnumerable<TeachingResource> resources)
         {
-            // HACK: JS, Our _allResources does currently not support data binding. Thus we need to improvise
             teachingResourcesDGV.RowEnter -= new DataGridViewCellEventHandler(TeachingResourcesDGV_RowEnter);
             teachingResourcesDGV.ClearSelection();
             teachingResourcesDGV.Rows.Clear();
@@ -153,7 +152,6 @@ namespace TutorialsArchiv
                 teachingResourcesDGV.Rows.Add(item.Title, item.Url);
                 teachingResourcesDGV.Rows[teachingResourcesDGV.RowCount - 1].Tag = item;
             }
-            teachingResourcesDGV.Refresh();
             teachingResourcesDGV.RowEnter += new DataGridViewCellEventHandler(TeachingResourcesDGV_RowEnter);
         }
 
