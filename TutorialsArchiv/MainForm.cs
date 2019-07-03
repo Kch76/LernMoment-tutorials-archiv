@@ -35,6 +35,13 @@ namespace TutorialsArchiv
 
         public TeachingResource CurrentResource { get; private set; }
 
+        public void SetupUI()
+        {
+            teachingResourcesDGV.ColumnCount = 2;
+            teachingResourcesDGV.Columns[0].Name = "Titel";
+            teachingResourcesDGV.Columns[1].Name = "Url";
+        }
+
         public void EnterNoResourcesMode()
         {
             cancelButton.Enabled = false;
@@ -113,7 +120,9 @@ namespace TutorialsArchiv
 
             CurrentResource = newResource;
             titelTextBox.Text = newResource.Title;
+            titelTextBox.Enabled = true;
             urlTextBox.Text = newResource.Url;
+            urlTextBox.Enabled = true;
 
             titelTextBox.Select();
         }
@@ -135,13 +144,14 @@ namespace TutorialsArchiv
 
         public void UpdateResourceCollectionView(IEnumerable<TeachingResource> resources)
         {
-            // HACK: JS, Our _allResources does currently not support data binding. Thus we need to improvise
             teachingResourcesDGV.RowEnter -= new DataGridViewCellEventHandler(TeachingResourcesDGV_RowEnter);
             teachingResourcesDGV.ClearSelection();
-            teachingResourcesDGV.DataSource = null;
             teachingResourcesDGV.Rows.Clear();
-            teachingResourcesDGV.DataSource = resources;
-            teachingResourcesDGV.Refresh();
+            foreach (var item in resources)
+            {
+                teachingResourcesDGV.Rows.Add(item.Title, item.Url);
+                teachingResourcesDGV.Rows[teachingResourcesDGV.RowCount - 1].Tag = item;
+            }
             teachingResourcesDGV.RowEnter += new DataGridViewCellEventHandler(TeachingResourcesDGV_RowEnter);
         }
 
@@ -192,7 +202,7 @@ namespace TutorialsArchiv
 
         private void TeachingResourcesDGV_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            TeachingResource selected = teachingResourcesDGV.Rows[e.RowIndex].DataBoundItem as TeachingResource;
+            TeachingResource selected = teachingResourcesDGV.Rows[e.RowIndex].Tag as TeachingResource;
 
             TeachingResourceHandler handler = ResourceSelected;
             handler?.Invoke(selected);
