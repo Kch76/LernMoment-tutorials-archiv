@@ -37,8 +37,9 @@ namespace TutorialsArchiv
 
         public void SetupUI()
         {
-            teachingResourcesDGV.ColumnCount = 1;
+            teachingResourcesDGV.ColumnCount = 2;
             teachingResourcesDGV.Columns[0].Name = "Titel";
+            teachingResourcesDGV.Columns[1].Name = "Url";
         }
 
         public void EnterNoResourcesMode()
@@ -149,7 +150,7 @@ namespace TutorialsArchiv
             teachingResourcesDGV.Rows.Clear();
             foreach (var item in resources)
             {
-                teachingResourcesDGV.Rows.Add(item.Title);
+                teachingResourcesDGV.Rows.Add(item.Title, item.Url);
                 teachingResourcesDGV.Rows[teachingResourcesDGV.RowCount - 1].Tag = item;
             }
             teachingResourcesDGV.Refresh();
