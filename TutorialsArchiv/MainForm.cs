@@ -55,12 +55,7 @@ namespace TutorialsArchiv
             updateButton.Enabled = false;
             createButton.Enabled = true;
 
-            titelTextBox.Text = string.Empty;
-            titelTextBox.Enabled = false;
-            urlTextBox.Text = string.Empty;
-            urlTextBox.Enabled = false;
-            mediumComboBox.SelectedIndex = -1;
-            mediumComboBox.Enabled = false;
+            DisableEntryControls();
 
             teachingResourcesDGV.Visible = false;
         }
@@ -86,12 +81,7 @@ namespace TutorialsArchiv
             updateButton.Enabled = false;
             createButton.Enabled = true;
 
-            titelTextBox.Text = string.Empty;
-            titelTextBox.Enabled = false;
-            urlTextBox.Text = string.Empty;
-            urlTextBox.Enabled = false;
-            mediumComboBox.SelectedIndex = -1;
-            mediumComboBox.Enabled = false;
+            DisableEntryControls();
 
             teachingResourcesDGV.Enable();
         }
@@ -103,13 +93,7 @@ namespace TutorialsArchiv
             updateButton.Enabled = false;
 
             CurrentResource = selectedResource;
-
-            titelTextBox.Text = selectedResource.Title;
-            titelTextBox.Enabled = true;
-            urlTextBox.Text = selectedResource.Url;
-            urlTextBox.Enabled = true;
-            mediumComboBox.SelectedItem = selectedResource.Medium;
-            mediumComboBox.Enabled = true;
+            EnableResourceEntryControls(selectedResource);
 
             titelTextBox.Select();
         }
@@ -132,14 +116,29 @@ namespace TutorialsArchiv
             updateButton.Enabled = true;
 
             CurrentResource = newResource;
-            titelTextBox.Text = newResource.Title;
-            titelTextBox.Enabled = true;
-            urlTextBox.Text = newResource.Url;
-            urlTextBox.Enabled = true;
-            mediumComboBox.SelectedItem = newResource.Medium;
-            mediumComboBox.Enabled = true;
+            EnableResourceEntryControls(newResource);
 
             titelTextBox.Select();
+        }
+
+        private void DisableEntryControls()
+        {
+            titelTextBox.Text = string.Empty;
+            titelTextBox.Enabled = false;
+            urlTextBox.Text = string.Empty;
+            urlTextBox.Enabled = false;
+            mediumComboBox.SelectedIndex = -1;
+            mediumComboBox.Enabled = false;
+        }
+
+        private void EnableResourceEntryControls(TeachingResource initValue)
+        {
+            titelTextBox.Text = initValue.Title;
+            titelTextBox.Enabled = true;
+            urlTextBox.Text = initValue.Url;
+            urlTextBox.Enabled = true;
+            mediumComboBox.SelectedItem = initValue.Medium;
+            mediumComboBox.Enabled = true;
         }
 
         internal void EnterValidationFailedMode()
