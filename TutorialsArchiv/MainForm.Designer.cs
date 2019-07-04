@@ -46,9 +46,14 @@
             this.expertRadioButton = new System.Windows.Forms.RadioButton();
             this.advancedRadioButton = new System.Windows.Forms.RadioButton();
             this.beginnerRadioButton = new System.Windows.Forms.RadioButton();
+            this.tagsLabel = new System.Windows.Forms.Label();
+            this.tagsCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.tagsContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.hinzufügenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resourceEntryErrorProvider)).BeginInit();
             this.targetAudienceGroupBox.SuspendLayout();
+            this.tagsContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // urlLabel
@@ -165,7 +170,7 @@
             // mediumLabel
             // 
             this.mediumLabel.AutoSize = true;
-            this.mediumLabel.Location = new System.Drawing.Point(331, 89);
+            this.mediumLabel.Location = new System.Drawing.Point(331, 91);
             this.mediumLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.mediumLabel.Name = "mediumLabel";
             this.mediumLabel.Size = new System.Drawing.Size(47, 13);
@@ -188,7 +193,7 @@
             this.targetAudienceGroupBox.Controls.Add(this.expertRadioButton);
             this.targetAudienceGroupBox.Controls.Add(this.advancedRadioButton);
             this.targetAudienceGroupBox.Controls.Add(this.beginnerRadioButton);
-            this.targetAudienceGroupBox.Location = new System.Drawing.Point(378, 119);
+            this.targetAudienceGroupBox.Location = new System.Drawing.Point(378, 214);
             this.targetAudienceGroupBox.Name = "targetAudienceGroupBox";
             this.targetAudienceGroupBox.Size = new System.Drawing.Size(323, 39);
             this.targetAudienceGroupBox.TabIndex = 12;
@@ -231,12 +236,47 @@
             this.beginnerRadioButton.UseVisualStyleBackColor = true;
             this.beginnerRadioButton.Click += new System.EventHandler(this.TargetAudienceRadioButton_Clicked);
             // 
+            // tagsLabel
+            // 
+            this.tagsLabel.AutoSize = true;
+            this.tagsLabel.Location = new System.Drawing.Point(331, 118);
+            this.tagsLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.tagsLabel.Name = "tagsLabel";
+            this.tagsLabel.Size = new System.Drawing.Size(34, 13);
+            this.tagsLabel.TabIndex = 13;
+            this.tagsLabel.Text = "Tags:";
+            // 
+            // tagsCheckedListBox
+            // 
+            this.tagsCheckedListBox.CheckOnClick = true;
+            this.tagsCheckedListBox.ContextMenuStrip = this.tagsContextMenuStrip;
+            this.tagsCheckedListBox.FormattingEnabled = true;
+            this.tagsCheckedListBox.Location = new System.Drawing.Point(378, 114);
+            this.tagsCheckedListBox.Name = "tagsCheckedListBox";
+            this.tagsCheckedListBox.Size = new System.Drawing.Size(120, 94);
+            this.tagsCheckedListBox.TabIndex = 16;
+            // 
+            // tagsContextMenuStrip
+            // 
+            this.tagsContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hinzufügenToolStripMenuItem});
+            this.tagsContextMenuStrip.Name = "tagsContextMenuStrip";
+            this.tagsContextMenuStrip.Size = new System.Drawing.Size(137, 26);
+            // 
+            // hinzufügenToolStripMenuItem
+            // 
+            this.hinzufügenToolStripMenuItem.Name = "hinzufügenToolStripMenuItem";
+            this.hinzufügenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hinzufügenToolStripMenuItem.Text = "Hinzufügen";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(721, 378);
+            this.Controls.Add(this.tagsCheckedListBox);
+            this.Controls.Add(this.tagsLabel);
             this.Controls.Add(this.targetAudienceGroupBox);
             this.Controls.Add(this.mediumComboBox);
             this.Controls.Add(this.mediumLabel);
@@ -257,6 +297,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.resourceEntryErrorProvider)).EndInit();
             this.targetAudienceGroupBox.ResumeLayout(false);
             this.targetAudienceGroupBox.PerformLayout();
+            this.tagsContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,6 +322,10 @@
         private System.Windows.Forms.RadioButton expertRadioButton;
         private System.Windows.Forms.RadioButton advancedRadioButton;
         private System.Windows.Forms.RadioButton beginnerRadioButton;
+        private System.Windows.Forms.Label tagsLabel;
+        private System.Windows.Forms.CheckedListBox tagsCheckedListBox;
+        private System.Windows.Forms.ContextMenuStrip tagsContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem hinzufügenToolStripMenuItem;
     }
 }
 

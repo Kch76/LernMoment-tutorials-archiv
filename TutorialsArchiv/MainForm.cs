@@ -42,7 +42,7 @@ namespace TutorialsArchiv
             teachingResourcesDGV.Columns[1].Name = "Url";
 
             mediumComboBox.DataSource = Enum.GetValues(typeof(MediumType));
-
+            tagsCheckedListBox.DataSource = new List<string> { "C#", "GitHub", "Übung", "Kata" };
             beginnerRadioButton.Tag = TargetAudience.beginner;
             advancedRadioButton.Tag = TargetAudience.advanced;
             expertRadioButton.Tag = TargetAudience.expert;
