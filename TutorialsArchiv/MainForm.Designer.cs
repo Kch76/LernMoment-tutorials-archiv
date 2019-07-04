@@ -42,8 +42,13 @@
             this.resourceEntryErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.mediumLabel = new System.Windows.Forms.Label();
             this.mediumComboBox = new System.Windows.Forms.ComboBox();
+            this.targetAudienceGroupBox = new System.Windows.Forms.GroupBox();
+            this.expertRadioButton = new System.Windows.Forms.RadioButton();
+            this.advancedRadioButton = new System.Windows.Forms.RadioButton();
+            this.beginnerRadioButton = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resourceEntryErrorProvider)).BeginInit();
+            this.targetAudienceGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // urlLabel
@@ -172,11 +177,59 @@
             this.mediumComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.mediumComboBox.FormattingEnabled = true;
             this.mediumComboBox.Location = new System.Drawing.Point(378, 88);
-            this.mediumComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mediumComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.mediumComboBox.Name = "mediumComboBox";
             this.mediumComboBox.Size = new System.Drawing.Size(182, 21);
             this.mediumComboBox.TabIndex = 11;
             this.mediumComboBox.SelectionChangeCommitted += new System.EventHandler(this.MediumComboBox_SelectionChangeCommitted);
+            // 
+            // targetAudienceGroupBox
+            // 
+            this.targetAudienceGroupBox.Controls.Add(this.expertRadioButton);
+            this.targetAudienceGroupBox.Controls.Add(this.advancedRadioButton);
+            this.targetAudienceGroupBox.Controls.Add(this.beginnerRadioButton);
+            this.targetAudienceGroupBox.Location = new System.Drawing.Point(378, 119);
+            this.targetAudienceGroupBox.Name = "targetAudienceGroupBox";
+            this.targetAudienceGroupBox.Size = new System.Drawing.Size(323, 39);
+            this.targetAudienceGroupBox.TabIndex = 12;
+            this.targetAudienceGroupBox.TabStop = false;
+            this.targetAudienceGroupBox.Text = "Zielgruppe:";
+            // 
+            // expertRadioButton
+            // 
+            this.expertRadioButton.AutoSize = true;
+            this.expertRadioButton.Location = new System.Drawing.Point(194, 16);
+            this.expertRadioButton.Name = "expertRadioButton";
+            this.expertRadioButton.Size = new System.Drawing.Size(61, 17);
+            this.expertRadioButton.TabIndex = 2;
+            this.expertRadioButton.TabStop = true;
+            this.expertRadioButton.Text = "Experte";
+            this.expertRadioButton.UseVisualStyleBackColor = true;
+            this.expertRadioButton.CheckedChanged += new System.EventHandler(this.TargetAudienceRadioButton_CheckedChanged);
+            // 
+            // advancedRadioButton
+            // 
+            this.advancedRadioButton.AutoSize = true;
+            this.advancedRadioButton.Location = new System.Drawing.Point(84, 16);
+            this.advancedRadioButton.Name = "advancedRadioButton";
+            this.advancedRadioButton.Size = new System.Drawing.Size(104, 17);
+            this.advancedRadioButton.TabIndex = 1;
+            this.advancedRadioButton.TabStop = true;
+            this.advancedRadioButton.Text = "Fortgeschrittener";
+            this.advancedRadioButton.UseVisualStyleBackColor = true;
+            this.advancedRadioButton.CheckedChanged += new System.EventHandler(this.TargetAudienceRadioButton_CheckedChanged);
+            // 
+            // beginnerRadioButton
+            // 
+            this.beginnerRadioButton.AutoSize = true;
+            this.beginnerRadioButton.Location = new System.Drawing.Point(7, 16);
+            this.beginnerRadioButton.Name = "beginnerRadioButton";
+            this.beginnerRadioButton.Size = new System.Drawing.Size(71, 17);
+            this.beginnerRadioButton.TabIndex = 0;
+            this.beginnerRadioButton.TabStop = true;
+            this.beginnerRadioButton.Text = "Einsteiger";
+            this.beginnerRadioButton.UseVisualStyleBackColor = true;
+            this.beginnerRadioButton.CheckedChanged += new System.EventHandler(this.TargetAudienceRadioButton_CheckedChanged);
             // 
             // MainForm
             // 
@@ -184,6 +237,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(721, 378);
+            this.Controls.Add(this.targetAudienceGroupBox);
             this.Controls.Add(this.mediumComboBox);
             this.Controls.Add(this.mediumLabel);
             this.Controls.Add(this.updateButton);
@@ -201,6 +255,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resourceEntryErrorProvider)).EndInit();
+            this.targetAudienceGroupBox.ResumeLayout(false);
+            this.targetAudienceGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,6 +277,10 @@
         private System.Windows.Forms.ErrorProvider resourceEntryErrorProvider;
         private System.Windows.Forms.ComboBox mediumComboBox;
         private System.Windows.Forms.Label mediumLabel;
+        private System.Windows.Forms.GroupBox targetAudienceGroupBox;
+        private System.Windows.Forms.RadioButton expertRadioButton;
+        private System.Windows.Forms.RadioButton advancedRadioButton;
+        private System.Windows.Forms.RadioButton beginnerRadioButton;
     }
 }
 

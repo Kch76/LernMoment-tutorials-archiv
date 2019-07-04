@@ -42,6 +42,10 @@ namespace TutorialsArchiv
             teachingResourcesDGV.Columns[1].Name = "Url";
 
             mediumComboBox.DataSource = Enum.GetValues(typeof(MediumType));
+
+            beginnerRadioButton.Tag = TargetAudience.beginner;
+            advancedRadioButton.Tag = TargetAudience.advanced;
+            expertRadioButton.Tag = TargetAudience.expert;
         }
 
         public void EnterNoResourcesMode()
@@ -125,6 +129,7 @@ namespace TutorialsArchiv
             urlTextBox.Enabled = false;
             mediumComboBox.SelectedIndex = -1;
             mediumComboBox.Enabled = false;
+            targetAudienceGroupBox.Enabled = false;
         }
 
         private void EnableResourceEntryControls(TeachingResource initValue)
@@ -135,8 +140,30 @@ namespace TutorialsArchiv
             urlTextBox.Enabled = true;
             mediumComboBox.SelectedItem = initValue.Medium;
             mediumComboBox.Enabled = true;
+            GetRadioButton(initValue.Audience).Checked = true;
+            targetAudienceGroupBox.Enabled = true;
         }
 
+        private RadioButton GetRadioButton(TargetAudience audience)
+        {
+            RadioButton result;
+            switch (audience)
+            {
+                case TargetAudience.beginner:
+                    result = beginnerRadioButton;
+                    break;
+                case TargetAudience.advanced:
+                    result = advancedRadioButton;
+                    break;
+                case TargetAudience.expert:
+                    result = expertRadioButton;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("audience", $"Es ist kein RadioButton für '{audience.ToString()}' definiert.");
+            }
+
+            return result;
+        }
         internal void EnterValidationFailedMode()
         {
             updateButton.Enabled = false;
@@ -220,6 +247,7 @@ namespace TutorialsArchiv
             CurrentResource.Title = titelTextBox.Text;
             CurrentResource.Url = urlTextBox.Text;
             CurrentResource.Medium = (MediumType) mediumComboBox.SelectedItem;
+            // Audience is set in RadioButton_CheckedChanged
 
             RaiseEventWithEmptyArgs(ResourceEditCompleted);
         }
@@ -302,6 +330,21 @@ namespace TutorialsArchiv
             ValidationChangedHandler handler = ValidationStateChanged;
             ValidationChangedEventArgs args = new ValidationChangedEventArgs(propertyName, isValid);
             handler?.Invoke(this, args);
+        }
+
+        private void TargetAudienceRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+
+            if (rb == null)
+            {
+                throw new ArgumentException("sender", "Hier können nur RadioButtons verarbeitet werden!");
+            }
+
+            if (rb.Checked)
+            {
+                CurrentResource.Audience = (TargetAudience)rb.Tag;
+            }
         }
     }
 }
