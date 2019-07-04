@@ -123,13 +123,13 @@ namespace TutorialsArchiv
 
         private void DisableEntryControls()
         {
+            targetAudienceGroupBox.Enabled = false;
             titelTextBox.Text = string.Empty;
             titelTextBox.Enabled = false;
             urlTextBox.Text = string.Empty;
             urlTextBox.Enabled = false;
             mediumComboBox.SelectedIndex = -1;
             mediumComboBox.Enabled = false;
-            targetAudienceGroupBox.Enabled = false;
         }
 
         private void EnableResourceEntryControls(TeachingResource initValue)
@@ -164,6 +164,24 @@ namespace TutorialsArchiv
 
             return result;
         }
+
+        private TargetAudience GetSelectedTargetAudienceFromRadioButtons()
+        {
+            foreach (var control in targetAudienceGroupBox.Controls)
+            {
+                // New pattern matching Syntax in C# 7!!!
+                // rb is still in scope after if statement!!!
+                if (control is RadioButton rb)
+                {
+                    if (rb.Checked)
+                    {
+                        return (TargetAudience)rb.Tag;
+                    }
+                }
+            }
+            throw new InvalidOperationException("Es ist kein RadioButton selektiert. Das geht aber gar nicht!");
+        }
+
         internal void EnterValidationFailedMode()
         {
             updateButton.Enabled = false;
@@ -227,6 +245,11 @@ namespace TutorialsArchiv
             }
         }
 
+        private void TargetAudienceRadioButton_Clicked(object sender, EventArgs e)
+        {
+            RaiseEventWithEmptyArgs(ResourceEdited);
+        }
+
         private void CreateButton_Click(object sender, EventArgs e)
         {
             RaiseEventWithEmptyArgs(ResourceCreationRequested);
@@ -247,7 +270,7 @@ namespace TutorialsArchiv
             CurrentResource.Title = titelTextBox.Text;
             CurrentResource.Url = urlTextBox.Text;
             CurrentResource.Medium = (MediumType) mediumComboBox.SelectedItem;
-            // Audience is set in RadioButton_CheckedChanged
+            CurrentResource.Audience = GetSelectedTargetAudienceFromRadioButtons();
 
             RaiseEventWithEmptyArgs(ResourceEditCompleted);
         }
@@ -330,21 +353,6 @@ namespace TutorialsArchiv
             ValidationChangedHandler handler = ValidationStateChanged;
             ValidationChangedEventArgs args = new ValidationChangedEventArgs(propertyName, isValid);
             handler?.Invoke(this, args);
-        }
-
-        private void TargetAudienceRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            RadioButton rb = sender as RadioButton;
-
-            if (rb == null)
-            {
-                throw new ArgumentException("sender", "Hier können nur RadioButtons verarbeitet werden!");
-            }
-
-            if (rb.Checked)
-            {
-                CurrentResource.Audience = (TargetAudience)rb.Tag;
-            }
         }
     }
 }

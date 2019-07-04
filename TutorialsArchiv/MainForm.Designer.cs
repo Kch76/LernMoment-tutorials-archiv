@@ -205,7 +205,7 @@
             this.expertRadioButton.TabStop = true;
             this.expertRadioButton.Text = "Experte";
             this.expertRadioButton.UseVisualStyleBackColor = true;
-            this.expertRadioButton.CheckedChanged += new System.EventHandler(this.TargetAudienceRadioButton_CheckedChanged);
+            this.expertRadioButton.Click += new System.EventHandler(this.TargetAudienceRadioButton_Clicked);
             // 
             // advancedRadioButton
             // 
@@ -217,7 +217,7 @@
             this.advancedRadioButton.TabStop = true;
             this.advancedRadioButton.Text = "Fortgeschrittener";
             this.advancedRadioButton.UseVisualStyleBackColor = true;
-            this.advancedRadioButton.CheckedChanged += new System.EventHandler(this.TargetAudienceRadioButton_CheckedChanged);
+            this.advancedRadioButton.Click += new System.EventHandler(this.TargetAudienceRadioButton_Clicked);
             // 
             // beginnerRadioButton
             // 
@@ -229,7 +229,7 @@
             this.beginnerRadioButton.TabStop = true;
             this.beginnerRadioButton.Text = "Einsteiger";
             this.beginnerRadioButton.UseVisualStyleBackColor = true;
-            this.beginnerRadioButton.CheckedChanged += new System.EventHandler(this.TargetAudienceRadioButton_CheckedChanged);
+            this.beginnerRadioButton.Click += new System.EventHandler(this.TargetAudienceRadioButton_Clicked);
             // 
             // MainForm
             // 
