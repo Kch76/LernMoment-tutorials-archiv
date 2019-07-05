@@ -28,15 +28,13 @@ namespace TutorialsArchiv
         public string Url { get; set; }
         public MediumType Medium { get; set; }
         public TargetAudience Audience { get; set; }
+        public IList<string> Tags { get; set; } = new List<string>();
 
         public TeachingResource() { }
 
-        public TeachingResource(string theTitle, string theUrl, MediumType theMedium, TargetAudience theAudience)
+        public TeachingResource(string theUrl)
         {
-            Title = theTitle;
             Url = theUrl;
-            Medium = theMedium;
-            Audience = theAudience;
         }
     }
 }

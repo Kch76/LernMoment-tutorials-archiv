@@ -35,8 +35,6 @@ namespace TutorialsArchiv
 
         public TeachingResource CurrentResource { get; private set; }
 
-        private BindingList<string> _tags = new BindingList<string> { "C#", "GitHub", "Übung", "Kata" };
-
         public void SetupUI()
         {
             teachingResourcesDGV.ColumnCount = 2;
@@ -44,7 +42,6 @@ namespace TutorialsArchiv
             teachingResourcesDGV.Columns[1].Name = "Url";
 
             mediumComboBox.DataSource = Enum.GetValues(typeof(MediumType));
-            tagsCheckedListBox.DataSource = _tags;
             beginnerRadioButton.Tag = TargetAudience.beginner;
             advancedRadioButton.Tag = TargetAudience.advanced;
             expertRadioButton.Tag = TargetAudience.expert;
@@ -144,6 +141,12 @@ namespace TutorialsArchiv
             mediumComboBox.Enabled = true;
             GetRadioButton(initValue.Audience).Checked = true;
             targetAudienceGroupBox.Enabled = true;
+
+            tagsCheckedListBox.Items.Clear();
+            foreach (string tag in initValue.Tags)
+            {
+                tagsCheckedListBox.Items.Add(tag, true);
+            }
         }
 
         private RadioButton GetRadioButton(TargetAudience audience)
@@ -274,6 +277,12 @@ namespace TutorialsArchiv
             CurrentResource.Medium = (MediumType) mediumComboBox.SelectedItem;
             CurrentResource.Audience = GetSelectedTargetAudienceFromRadioButtons();
 
+            CurrentResource.Tags.Clear();
+            foreach (string item in tagsCheckedListBox.CheckedItems)
+            {
+                CurrentResource.Tags.Add(item);
+            }
+
             RaiseEventWithEmptyArgs(ResourceEditCompleted);
         }
 
@@ -364,7 +373,7 @@ namespace TutorialsArchiv
 
             if (!addDialog.WasCanceled)
             {
-                _tags.Add(addDialog.NewTag);
+                tagsCheckedListBox.Items.Add(addDialog.NewTag);
                 RaiseEventWithEmptyArgs(ResourceEdited);
             }
         }

@@ -116,7 +116,13 @@ namespace TutorialsArchiv
                 return;
             }
 
-            TeachingResource newResource = new TeachingResource("Neue Ressource", "Bitte ausfüllen", MediumType.Buch, TargetAudience.beginner);
+            var newResource = new TeachingResource("http://www.lernmoment.de/Winforms-Lehrplan-App/")
+            {
+                Title = "Neue Ressource",
+                Medium = MediumType.Artikel,
+                Audience = TargetAudience.beginner
+            };
+
             _activeResource = newResource;
             _allResources.Add(newResource);
 

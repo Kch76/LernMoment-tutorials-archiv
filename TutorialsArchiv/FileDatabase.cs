@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using CsvHelper.Configuration;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +24,7 @@ namespace TutorialsArchiv
             using (var csv = new CsvWriter(writer))
             {
                 csv.Configuration.Delimiter = ";";
+                csv.Configuration.RegisterClassMap<TeachingResourceIndexMap>();
 
                 csv.WriteRecords(entries);
                 writer.Flush();
@@ -36,10 +38,23 @@ namespace TutorialsArchiv
             using (var reader = new StreamReader(_fileName))
             using (var csv = new CsvReader(reader))
             {
+                csv.Configuration.RegisterClassMap<TeachingResourceIndexMap>();
                 allResources = csv.GetRecords<TeachingResource>().ToList();
             }
 
             return allResources;
+        }
+
+        private sealed class TeachingResourceIndexMap : ClassMap<TeachingResource>
+        {
+            public TeachingResourceIndexMap()
+            {
+                Map(m => m.Title).Index(0);
+                Map(m => m.Url).Index(1);
+                Map(m => m.Medium).Index(2);
+                Map(m => m.Audience).Index(3);
+                Map(m => m.Tags).Index(4);
+            }
         }
     }
 }
