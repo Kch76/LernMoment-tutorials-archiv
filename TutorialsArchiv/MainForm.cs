@@ -35,6 +35,8 @@ namespace TutorialsArchiv
 
         public TeachingResource CurrentResource { get; private set; }
 
+        private BindingList<string> _tags = new BindingList<string> { "C#", "GitHub", "Übung", "Kata" };
+
         public void SetupUI()
         {
             teachingResourcesDGV.ColumnCount = 2;
@@ -42,7 +44,7 @@ namespace TutorialsArchiv
             teachingResourcesDGV.Columns[1].Name = "Url";
 
             mediumComboBox.DataSource = Enum.GetValues(typeof(MediumType));
-            tagsCheckedListBox.DataSource = new List<string> { "C#", "GitHub", "Übung", "Kata" };
+            tagsCheckedListBox.DataSource = _tags;
             beginnerRadioButton.Tag = TargetAudience.beginner;
             advancedRadioButton.Tag = TargetAudience.advanced;
             expertRadioButton.Tag = TargetAudience.expert;
@@ -353,6 +355,17 @@ namespace TutorialsArchiv
             ValidationChangedHandler handler = ValidationStateChanged;
             ValidationChangedEventArgs args = new ValidationChangedEventArgs(propertyName, isValid);
             handler?.Invoke(this, args);
+        }
+
+        private void HinzufügenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var addDialog = new AddTagForm();
+            addDialog.ShowDialog(this);
+
+            if (!addDialog.WasCanceled)
+            {
+                _tags.Add(addDialog.NewTag);
+            }
         }
     }
 }
