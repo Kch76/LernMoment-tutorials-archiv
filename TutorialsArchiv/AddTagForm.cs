@@ -15,8 +15,6 @@ namespace TutorialsArchiv
         public string NewTag { get; private set; }
         public bool WasCanceled { get; private set; }
 
-        private bool _isTagValid = false;
-
         public AddTagForm()
         {
             InitializeComponent();
@@ -43,12 +41,10 @@ namespace TutorialsArchiv
             if (tagTextBox.Text.Length > 0)
             {
                 addButton.Enabled = true;
-                cancelButton.Enabled = true;
             }
             else
             {
                 addButton.Enabled = false;
-                cancelButton.Enabled = false;
             }
         }
     }
