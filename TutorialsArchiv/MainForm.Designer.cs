@@ -49,7 +49,7 @@
             this.tagsLabel = new System.Windows.Forms.Label();
             this.tagsCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.tagsContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.hinzufügenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resourceEntryErrorProvider)).BeginInit();
             this.targetAudienceGroupBox.SuspendLayout();
@@ -259,16 +259,16 @@
             // tagsContextMenuStrip
             // 
             this.tagsContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hinzufügenToolStripMenuItem});
+            this.addToolStripMenuItem});
             this.tagsContextMenuStrip.Name = "tagsContextMenuStrip";
             this.tagsContextMenuStrip.Size = new System.Drawing.Size(181, 48);
             // 
-            // hinzufügenToolStripMenuItem
+            // addToolStripMenuItem
             // 
-            this.hinzufügenToolStripMenuItem.Name = "hinzufügenToolStripMenuItem";
-            this.hinzufügenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.hinzufügenToolStripMenuItem.Text = "Hinzufügen";
-            this.hinzufügenToolStripMenuItem.Click += new System.EventHandler(this.HinzufügenToolStripMenuItem_Click);
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Text = "Hinzufügen";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -326,7 +326,7 @@
         private System.Windows.Forms.Label tagsLabel;
         private System.Windows.Forms.CheckedListBox tagsCheckedListBox;
         private System.Windows.Forms.ContextMenuStrip tagsContextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem hinzufügenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
     }
 }
 

@@ -357,7 +357,7 @@ namespace TutorialsArchiv
             handler?.Invoke(this, args);
         }
 
-        private void HinzufügenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var addDialog = new AddTagForm();
             addDialog.ShowDialog(this);
