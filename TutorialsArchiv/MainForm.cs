@@ -15,6 +15,8 @@ namespace TutorialsArchiv
 {
     public partial class MainForm : Form
     {
+        private readonly static IEnumerable<string> _defaultTags = new string[] {"C#", "GitHub", "Übung", "Kata"};
+
         public MainForm()
         {
             InitializeComponent();
@@ -45,6 +47,8 @@ namespace TutorialsArchiv
             beginnerRadioButton.Tag = TargetAudience.beginner;
             advancedRadioButton.Tag = TargetAudience.advanced;
             expertRadioButton.Tag = TargetAudience.expert;
+
+            tagsCheckedListBox.Items.AddRange(_defaultTags.ToArray());
         }
 
         public void EnterNoResourcesMode()
@@ -148,9 +152,18 @@ namespace TutorialsArchiv
 
             tagsCheckedListBox.Enabled = true;
             tagsCheckedListBox.Items.Clear();
+            tagsCheckedListBox.Items.AddRange(_defaultTags.ToArray());
             foreach (string tag in initValue.Tags)
             {
-                tagsCheckedListBox.Items.Add(tag, true);
+                var index = tagsCheckedListBox.Items.IndexOf(tag);
+                if (index > -1)
+                {
+                    tagsCheckedListBox.SetItemChecked(index, true);
+                }
+                else
+                {
+                    tagsCheckedListBox.Items.Add(tag, true);
+                }
             }
         }
 
