@@ -40,7 +40,7 @@
             this.tagTextBox.Name = "tagTextBox";
             this.tagTextBox.Size = new System.Drawing.Size(247, 20);
             this.tagTextBox.TabIndex = 0;
-            this.tagTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TagTextBox_KeyPress);
+            this.tagTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TagTextBox_KeyUp);
             // 
             // label1
             // 

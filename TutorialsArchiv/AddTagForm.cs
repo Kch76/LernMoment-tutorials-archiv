@@ -38,7 +38,7 @@ namespace TutorialsArchiv
             this.Close();
         }
 
-        private void TagTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void TagTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             if (tagTextBox.Text.Length > 0)
             {
