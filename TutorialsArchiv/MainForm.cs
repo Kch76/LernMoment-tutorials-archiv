@@ -365,6 +365,15 @@ namespace TutorialsArchiv
             if (!addDialog.WasCanceled)
             {
                 _tags.Add(addDialog.NewTag);
+                RaiseEventWithEmptyArgs(ResourceEdited);
+            }
+        }
+
+        private void TagsCheckedListBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (tagsCheckedListBox.SelectedItems.Count > 0)
+            {
+                RaiseEventWithEmptyArgs(ResourceEdited);
             }
         }
     }

@@ -255,18 +255,19 @@
             this.tagsCheckedListBox.Name = "tagsCheckedListBox";
             this.tagsCheckedListBox.Size = new System.Drawing.Size(120, 94);
             this.tagsCheckedListBox.TabIndex = 16;
+            this.tagsCheckedListBox.SelectedValueChanged += new System.EventHandler(this.TagsCheckedListBox_SelectedValueChanged);
             // 
             // tagsContextMenuStrip
             // 
             this.tagsContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToolStripMenuItem});
             this.tagsContextMenuStrip.Name = "tagsContextMenuStrip";
-            this.tagsContextMenuStrip.Size = new System.Drawing.Size(181, 48);
+            this.tagsContextMenuStrip.Size = new System.Drawing.Size(137, 26);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.addToolStripMenuItem.Text = "Hinzufügen";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
             // 
