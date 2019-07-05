@@ -64,6 +64,8 @@ namespace TutorialsArchiv
             titelTextBox.Enabled = true;
             urlTextBox.Enabled = true;
             mediumComboBox.Enabled = true;
+            targetAudienceGroupBox.Enabled = true;
+            tagsCheckedListBox.Enabled = true;
         }
 
         public void LeaveNoResourcesMode()
@@ -129,6 +131,8 @@ namespace TutorialsArchiv
             urlTextBox.Enabled = false;
             mediumComboBox.SelectedIndex = -1;
             mediumComboBox.Enabled = false;
+            tagsCheckedListBox.Items.Clear();
+            tagsCheckedListBox.Enabled = false;
         }
 
         private void EnableResourceEntryControls(TeachingResource initValue)
@@ -142,6 +146,7 @@ namespace TutorialsArchiv
             GetRadioButton(initValue.Audience).Checked = true;
             targetAudienceGroupBox.Enabled = true;
 
+            tagsCheckedListBox.Enabled = true;
             tagsCheckedListBox.Items.Clear();
             foreach (string tag in initValue.Tags)
             {
@@ -373,7 +378,7 @@ namespace TutorialsArchiv
 
             if (!addDialog.WasCanceled)
             {
-                tagsCheckedListBox.Items.Add(addDialog.NewTag);
+                tagsCheckedListBox.Items.Add(addDialog.NewTag, true);
                 RaiseEventWithEmptyArgs(ResourceEdited);
             }
         }
