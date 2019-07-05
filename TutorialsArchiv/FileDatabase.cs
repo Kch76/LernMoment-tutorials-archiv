@@ -23,7 +23,6 @@ namespace TutorialsArchiv
             using (var csv = new CsvWriter(writer))
             {
                 csv.Configuration.Delimiter = ";";
-                csv.Configuration.HasHeaderRecord = false;
 
                 csv.WriteRecords(entries);
                 writer.Flush();
@@ -37,7 +36,6 @@ namespace TutorialsArchiv
             using (var reader = new StreamReader(_fileName))
             using (var csv = new CsvReader(reader))
             {
-                csv.Configuration.HasHeaderRecord = false;
                 allResources = csv.GetRecords<TeachingResource>().ToList();
             }
 
