@@ -50,16 +50,20 @@
             this.tagsCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.tagsContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.detailsGroupBox = new System.Windows.Forms.GroupBox();
+            this.detailsEditPanel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resourceEntryErrorProvider)).BeginInit();
             this.targetAudienceGroupBox.SuspendLayout();
             this.tagsContextMenuStrip.SuspendLayout();
+            this.detailsGroupBox.SuspendLayout();
+            this.detailsEditPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // urlLabel
             // 
             this.urlLabel.AutoSize = true;
-            this.urlLabel.Location = new System.Drawing.Point(331, 63);
+            this.urlLabel.Location = new System.Drawing.Point(3, 31);
             this.urlLabel.Name = "urlLabel";
             this.urlLabel.Size = new System.Drawing.Size(32, 13);
             this.urlLabel.TabIndex = 0;
@@ -67,7 +71,7 @@
             // 
             // urlTextBox
             // 
-            this.urlTextBox.Location = new System.Drawing.Point(378, 61);
+            this.urlTextBox.Location = new System.Drawing.Point(50, 29);
             this.urlTextBox.Name = "urlTextBox";
             this.urlTextBox.Size = new System.Drawing.Size(323, 20);
             this.urlTextBox.TabIndex = 3;
@@ -77,7 +81,7 @@
             // 
             // titelTextBox
             // 
-            this.titelTextBox.Location = new System.Drawing.Point(378, 35);
+            this.titelTextBox.Location = new System.Drawing.Point(50, 3);
             this.titelTextBox.Name = "titelTextBox";
             this.titelTextBox.Size = new System.Drawing.Size(323, 20);
             this.titelTextBox.TabIndex = 1;
@@ -88,7 +92,7 @@
             // titelLabel
             // 
             this.titelLabel.AutoSize = true;
-            this.titelLabel.Location = new System.Drawing.Point(331, 37);
+            this.titelLabel.Location = new System.Drawing.Point(3, 5);
             this.titelLabel.Name = "titelLabel";
             this.titelLabel.Size = new System.Drawing.Size(30, 13);
             this.titelLabel.TabIndex = 2;
@@ -106,7 +110,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(536, 306);
+            this.cancelButton.Location = new System.Drawing.Point(223, 289);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 5;
@@ -132,7 +136,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(369, 306);
+            this.deleteButton.Location = new System.Drawing.Point(56, 289);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 7;
@@ -142,7 +146,7 @@
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(617, 306);
+            this.updateButton.Location = new System.Drawing.Point(304, 289);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 23);
             this.updateButton.TabIndex = 8;
@@ -170,7 +174,7 @@
             // mediumLabel
             // 
             this.mediumLabel.AutoSize = true;
-            this.mediumLabel.Location = new System.Drawing.Point(331, 91);
+            this.mediumLabel.Location = new System.Drawing.Point(3, 59);
             this.mediumLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.mediumLabel.Name = "mediumLabel";
             this.mediumLabel.Size = new System.Drawing.Size(47, 13);
@@ -181,7 +185,7 @@
             // 
             this.mediumComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.mediumComboBox.FormattingEnabled = true;
-            this.mediumComboBox.Location = new System.Drawing.Point(378, 88);
+            this.mediumComboBox.Location = new System.Drawing.Point(50, 56);
             this.mediumComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.mediumComboBox.Name = "mediumComboBox";
             this.mediumComboBox.Size = new System.Drawing.Size(182, 21);
@@ -193,7 +197,7 @@
             this.targetAudienceGroupBox.Controls.Add(this.expertRadioButton);
             this.targetAudienceGroupBox.Controls.Add(this.advancedRadioButton);
             this.targetAudienceGroupBox.Controls.Add(this.beginnerRadioButton);
-            this.targetAudienceGroupBox.Location = new System.Drawing.Point(378, 214);
+            this.targetAudienceGroupBox.Location = new System.Drawing.Point(50, 182);
             this.targetAudienceGroupBox.Name = "targetAudienceGroupBox";
             this.targetAudienceGroupBox.Size = new System.Drawing.Size(323, 39);
             this.targetAudienceGroupBox.TabIndex = 12;
@@ -239,7 +243,7 @@
             // tagsLabel
             // 
             this.tagsLabel.AutoSize = true;
-            this.tagsLabel.Location = new System.Drawing.Point(331, 118);
+            this.tagsLabel.Location = new System.Drawing.Point(3, 86);
             this.tagsLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.tagsLabel.Name = "tagsLabel";
             this.tagsLabel.Size = new System.Drawing.Size(34, 13);
@@ -251,7 +255,7 @@
             this.tagsCheckedListBox.CheckOnClick = true;
             this.tagsCheckedListBox.ContextMenuStrip = this.tagsContextMenuStrip;
             this.tagsCheckedListBox.FormattingEnabled = true;
-            this.tagsCheckedListBox.Location = new System.Drawing.Point(378, 114);
+            this.tagsCheckedListBox.Location = new System.Drawing.Point(50, 82);
             this.tagsCheckedListBox.Name = "tagsCheckedListBox";
             this.tagsCheckedListBox.Size = new System.Drawing.Size(120, 94);
             this.tagsCheckedListBox.TabIndex = 16;
@@ -271,26 +275,44 @@
             this.addToolStripMenuItem.Text = "Hinzufügen";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
             // 
+            // detailsGroupBox
+            // 
+            this.detailsGroupBox.Controls.Add(this.detailsEditPanel);
+            this.detailsGroupBox.Controls.Add(this.deleteButton);
+            this.detailsGroupBox.Controls.Add(this.updateButton);
+            this.detailsGroupBox.Controls.Add(this.cancelButton);
+            this.detailsGroupBox.Location = new System.Drawing.Point(304, 11);
+            this.detailsGroupBox.Name = "detailsGroupBox";
+            this.detailsGroupBox.Size = new System.Drawing.Size(393, 318);
+            this.detailsGroupBox.TabIndex = 17;
+            this.detailsGroupBox.TabStop = false;
+            this.detailsGroupBox.Text = "Details";
+            // 
+            // detailsEditPanel
+            // 
+            this.detailsEditPanel.Controls.Add(this.titelTextBox);
+            this.detailsEditPanel.Controls.Add(this.urlLabel);
+            this.detailsEditPanel.Controls.Add(this.tagsCheckedListBox);
+            this.detailsEditPanel.Controls.Add(this.urlTextBox);
+            this.detailsEditPanel.Controls.Add(this.tagsLabel);
+            this.detailsEditPanel.Controls.Add(this.titelLabel);
+            this.detailsEditPanel.Controls.Add(this.targetAudienceGroupBox);
+            this.detailsEditPanel.Controls.Add(this.mediumLabel);
+            this.detailsEditPanel.Controls.Add(this.mediumComboBox);
+            this.detailsEditPanel.Location = new System.Drawing.Point(6, 19);
+            this.detailsEditPanel.Name = "detailsEditPanel";
+            this.detailsEditPanel.Size = new System.Drawing.Size(380, 228);
+            this.detailsEditPanel.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(721, 378);
-            this.Controls.Add(this.tagsCheckedListBox);
-            this.Controls.Add(this.tagsLabel);
-            this.Controls.Add(this.targetAudienceGroupBox);
-            this.Controls.Add(this.mediumComboBox);
-            this.Controls.Add(this.mediumLabel);
-            this.Controls.Add(this.updateButton);
-            this.Controls.Add(this.deleteButton);
+            this.ClientSize = new System.Drawing.Size(707, 378);
+            this.Controls.Add(this.detailsGroupBox);
             this.Controls.Add(this.teachingResourcesDGV);
-            this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.createButton);
-            this.Controls.Add(this.titelTextBox);
-            this.Controls.Add(this.titelLabel);
-            this.Controls.Add(this.urlTextBox);
-            this.Controls.Add(this.urlLabel);
             this.Controls.Add(this.emptyDgvLabel);
             this.Name = "MainForm";
             this.Text = "Lernmaterial Finder";
@@ -300,8 +322,10 @@
             this.targetAudienceGroupBox.ResumeLayout(false);
             this.targetAudienceGroupBox.PerformLayout();
             this.tagsContextMenuStrip.ResumeLayout(false);
+            this.detailsGroupBox.ResumeLayout(false);
+            this.detailsEditPanel.ResumeLayout(false);
+            this.detailsEditPanel.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -328,6 +352,8 @@
         private System.Windows.Forms.CheckedListBox tagsCheckedListBox;
         private System.Windows.Forms.ContextMenuStrip tagsContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.GroupBox detailsGroupBox;
+        private System.Windows.Forms.Panel detailsEditPanel;
     }
 }
 
