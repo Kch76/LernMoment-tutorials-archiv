@@ -39,6 +39,19 @@ namespace TutorialsArchiv
             using (var csv = new CsvReader(reader))
             {
                 csv.Configuration.RegisterClassMap<TeachingResourceIndexMap>();
+                csv.Configuration.MissingFieldFound = 
+                    (a,index,c) => 
+                    {
+                        if (index == 4)
+                        {
+                            // tags are on index 4 and optional. Thus it is no problem if they are missing! 
+                            return;
+                        }
+                        else
+                        {
+                            throw new CsvHelper.MissingFieldException(c, $"Field {index} is missing. This can currently not be handled!");
+                        }
+                    };
                 allResources = csv.GetRecords<TeachingResource>().ToList();
             }
 
