@@ -196,7 +196,11 @@ namespace TutorialsArchiv
             }
             else
             {
-                _invalidResourceProperties.Add(args.PropertyName);
+                // Only save an invalid property once, because UI might inform us several times.
+                if (!_invalidResourceProperties.Contains(args.PropertyName))
+                {
+                    _invalidResourceProperties.Add(args.PropertyName);
+                }
             }
 
             if (IsUserEditing())
