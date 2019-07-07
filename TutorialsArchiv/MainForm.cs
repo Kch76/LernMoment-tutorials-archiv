@@ -81,14 +81,17 @@ namespace TutorialsArchiv
 
         public void EnterInitMode()
         {
+            createButton.Enabled = true;
+            createButton.Select();
+
             cancelButton.Enabled = false;
             deleteButton.Enabled = false;
             updateButton.Enabled = false;
-            createButton.Enabled = true;
 
             DisableEntryControls();
 
             teachingResourcesDGV.Enable();
+            teachingResourcesDGV.ClearSelection();
         }
 
         public void EnterSelectExistingMode(TeachingResource selectedResource)

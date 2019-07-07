@@ -299,9 +299,9 @@
             this.detailsEditPanel.Controls.Add(this.targetAudienceGroupBox);
             this.detailsEditPanel.Controls.Add(this.mediumLabel);
             this.detailsEditPanel.Controls.Add(this.mediumComboBox);
-            this.detailsEditPanel.Location = new System.Drawing.Point(6, 19);
+            this.detailsEditPanel.Location = new System.Drawing.Point(6, 40);
             this.detailsEditPanel.Name = "detailsEditPanel";
-            this.detailsEditPanel.Size = new System.Drawing.Size(380, 228);
+            this.detailsEditPanel.Size = new System.Drawing.Size(381, 228);
             this.detailsEditPanel.TabIndex = 0;
             // 
             // MainForm
