@@ -74,7 +74,7 @@
             this.urlTextBox.Location = new System.Drawing.Point(50, 29);
             this.urlTextBox.Name = "urlTextBox";
             this.urlTextBox.Size = new System.Drawing.Size(323, 20);
-            this.urlTextBox.TabIndex = 3;
+            this.urlTextBox.TabIndex = 1;
             this.urlTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllTextBoxes_KeyPress);
             this.urlTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.UrlTextBox_Validating);
             this.urlTextBox.Validated += new System.EventHandler(this.UrlTextBox_Validated);
@@ -84,7 +84,7 @@
             this.titelTextBox.Location = new System.Drawing.Point(50, 3);
             this.titelTextBox.Name = "titelTextBox";
             this.titelTextBox.Size = new System.Drawing.Size(323, 20);
-            this.titelTextBox.TabIndex = 1;
+            this.titelTextBox.TabIndex = 0;
             this.titelTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllTextBoxes_KeyPress);
             this.titelTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.TitelTextBox_Validating);
             this.titelTextBox.Validated += new System.EventHandler(this.TitelTextBox_Validated);
@@ -103,7 +103,7 @@
             this.createButton.Location = new System.Drawing.Point(12, 343);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(90, 23);
-            this.createButton.TabIndex = 4;
+            this.createButton.TabIndex = 0;
             this.createButton.Text = "Hinzufügen";
             this.createButton.UseVisualStyleBackColor = true;
             this.createButton.Click += new System.EventHandler(this.CreateButton_Click);
@@ -113,7 +113,7 @@
             this.cancelButton.Location = new System.Drawing.Point(223, 289);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 5;
+            this.cancelButton.TabIndex = 1;
             this.cancelButton.Text = "Verwerfen";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
@@ -132,6 +132,7 @@
             this.teachingResourcesDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.teachingResourcesDGV.Size = new System.Drawing.Size(286, 317);
             this.teachingResourcesDGV.TabIndex = 6;
+            this.teachingResourcesDGV.TabStop = false;
             this.teachingResourcesDGV.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.TeachingResourcesDGV_RowEnter);
             // 
             // deleteButton
@@ -139,7 +140,7 @@
             this.deleteButton.Location = new System.Drawing.Point(56, 289);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
-            this.deleteButton.TabIndex = 7;
+            this.deleteButton.TabIndex = 2;
             this.deleteButton.Text = "Entfernen";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
@@ -149,7 +150,7 @@
             this.updateButton.Location = new System.Drawing.Point(304, 289);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 23);
-            this.updateButton.TabIndex = 8;
+            this.updateButton.TabIndex = 0;
             this.updateButton.Text = "Ändern";
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.UpdateButton_Click);
@@ -189,7 +190,7 @@
             this.mediumComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.mediumComboBox.Name = "mediumComboBox";
             this.mediumComboBox.Size = new System.Drawing.Size(182, 21);
-            this.mediumComboBox.TabIndex = 11;
+            this.mediumComboBox.TabIndex = 2;
             this.mediumComboBox.SelectionChangeCommitted += new System.EventHandler(this.MediumComboBox_SelectionChangeCommitted);
             // 
             // targetAudienceGroupBox
@@ -200,7 +201,7 @@
             this.targetAudienceGroupBox.Location = new System.Drawing.Point(50, 182);
             this.targetAudienceGroupBox.Name = "targetAudienceGroupBox";
             this.targetAudienceGroupBox.Size = new System.Drawing.Size(323, 39);
-            this.targetAudienceGroupBox.TabIndex = 12;
+            this.targetAudienceGroupBox.TabIndex = 4;
             this.targetAudienceGroupBox.TabStop = false;
             this.targetAudienceGroupBox.Text = "Zielgruppe:";
             // 
@@ -258,7 +259,7 @@
             this.tagsCheckedListBox.Location = new System.Drawing.Point(50, 82);
             this.tagsCheckedListBox.Name = "tagsCheckedListBox";
             this.tagsCheckedListBox.Size = new System.Drawing.Size(120, 94);
-            this.tagsCheckedListBox.TabIndex = 16;
+            this.tagsCheckedListBox.TabIndex = 3;
             this.tagsCheckedListBox.SelectedValueChanged += new System.EventHandler(this.TagsCheckedListBox_SelectedValueChanged);
             // 
             // tagsContextMenuStrip
@@ -284,7 +285,7 @@
             this.detailsGroupBox.Location = new System.Drawing.Point(304, 11);
             this.detailsGroupBox.Name = "detailsGroupBox";
             this.detailsGroupBox.Size = new System.Drawing.Size(393, 318);
-            this.detailsGroupBox.TabIndex = 17;
+            this.detailsGroupBox.TabIndex = 1;
             this.detailsGroupBox.TabStop = false;
             this.detailsGroupBox.Text = "Details";
             // 
@@ -311,8 +312,8 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(707, 378);
             this.Controls.Add(this.detailsGroupBox);
-            this.Controls.Add(this.teachingResourcesDGV);
             this.Controls.Add(this.createButton);
+            this.Controls.Add(this.teachingResourcesDGV);
             this.Controls.Add(this.emptyDgvLabel);
             this.Name = "MainForm";
             this.Text = "Lernmaterial Finder";
