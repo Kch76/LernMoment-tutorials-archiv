@@ -56,7 +56,10 @@ namespace TutorialsArchiv
             cancelButton.Enabled = false;
             deleteButton.Enabled = false;
             updateButton.Enabled = false;
+            detailsMenuItem.Enabled = false;
+
             createButton.Enabled = true;
+            resourceMenuItem.Enabled = true;
 
             DisableEntryControls();
 
@@ -84,7 +87,10 @@ namespace TutorialsArchiv
             cancelButton.Enabled = false;
             deleteButton.Enabled = false;
             updateButton.Enabled = false;
+            detailsMenuItem.Enabled = false;
+
             createButton.Enabled = true;
+            resourceMenuItem.Enabled = true;
 
             DisableEntryControls();
 
@@ -97,6 +103,7 @@ namespace TutorialsArchiv
             deleteButton.Enabled = true;
             cancelButton.Enabled = false;
             updateButton.Enabled = false;
+            detailsMenuItem.Enabled = true;
 
             CurrentResource = selectedResource;
             EnableResourceEntryControls(selectedResource);
@@ -106,10 +113,13 @@ namespace TutorialsArchiv
 
         public void EnterEditExistingMode()
         {
-            deleteButton.Enabled = false;
             createButton.Enabled = false;
+            resourceMenuItem.Enabled = false;
+
+            deleteButton.Enabled = false;
             cancelButton.Enabled = true;
             updateButton.Enabled = true;
+            detailsMenuItem.Enabled = true;
 
             teachingResourcesDGV.Disable();
         }
@@ -117,9 +127,12 @@ namespace TutorialsArchiv
         public void EnterEditNewMode(TeachingResource newResource)
         {
             createButton.Enabled = false;
+            resourceMenuItem.Enabled = false;
+
             deleteButton.Enabled = false;
             cancelButton.Enabled = true;
             updateButton.Enabled = true;
+            detailsMenuItem.Enabled = true;
 
             CurrentResource = newResource;
             EnableResourceEntryControls(newResource);
