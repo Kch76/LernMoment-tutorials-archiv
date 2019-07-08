@@ -54,6 +54,7 @@ namespace TutorialsArchiv
             _view.ResourceSelected += new MainForm.TeachingResourceHandler(ResourceGetsSelected);
             _view.Canceled += new EventHandler(CurrentActivityCanceled);
             _view.ValidationStateChanged += new MainForm.ValidationChangedHandler(ResourceValidationChanged);
+            _view.DataExportRequested += new MainForm.ExportDataHandler(ExportData);
             _view.FormCloseRequested += new MainForm.CloseFormHandler(FormGetsClosed);
         }
 
@@ -262,6 +263,11 @@ namespace TutorialsArchiv
             {
                 args.ForceClose = true;
             }
+        }
+
+        private void ExportData(object sender, ExportDataEventArgs args)
+        {
+            _db.Copy(args.NewFileNameAndPath);
         }
 
         private void EnterInitMode()

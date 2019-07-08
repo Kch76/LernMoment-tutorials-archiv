@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="CloseRequestedEventArgs.cs" />
     <Compile Include="DataGridViewExtensions.cs" />
+    <Compile Include="ExportDataEventArgs.cs" />
     <Compile Include="FileDatabase.cs" />
     <Compile Include="MainController.cs" />
     <Compile Include="MainForm.cs">

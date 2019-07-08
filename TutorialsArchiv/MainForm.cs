@@ -25,6 +25,7 @@ namespace TutorialsArchiv
         public delegate void TeachingResourceHandler(TeachingResource resource);
         public delegate void CloseFormHandler(object sender, CloseRequestedEventArgs args);
         public delegate void ValidationChangedHandler(object sender, ValidationChangedEventArgs args);
+        public delegate void ExportDataHandler(object sender, ExportDataEventArgs args);
 
         public event TeachingResourceHandler ResourceSelected;
         public event EventHandler ResourceEdited;
@@ -33,6 +34,7 @@ namespace TutorialsArchiv
         public event EventHandler ResourceDeletionRequested;
         public event EventHandler Canceled;
         public event ValidationChangedHandler ValidationStateChanged;
+        public event ExportDataHandler DataExportRequested;
         public event CloseFormHandler FormCloseRequested;
 
         public TeachingResource CurrentResource { get; private set; }
@@ -424,20 +426,20 @@ namespace TutorialsArchiv
 
         private void ExportDataMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveDialog = new SaveFileDialog();
-            saveDialog.Filter = "CSV|*.csv";
-            saveDialog.Title = "daten exportieren";
-            DialogResult result = saveDialog.ShowDialog();
-            
-            // If the file name is not an empty string open it for saving.  
-            if (result == DialogResult.OK && saveDialog.FileName != "")
+            using (SaveFileDialog saveDialog = new SaveFileDialog
             {
-                if (File.Exists(saveDialog.FileName))
-                {
-                    File.Delete(saveDialog.FileName);
-                }
+                Filter = "CSV|*.csv",
+                Title = "daten exportieren"
+            })
+            {
+                DialogResult result = saveDialog.ShowDialog();
 
-                File.Copy("file-database.csv", saveDialog.FileName);
+                if (result == DialogResult.OK && saveDialog.FileName != "")
+                {
+                    ExportDataHandler handler = DataExportRequested;
+                    ExportDataEventArgs args = new ExportDataEventArgs(saveDialog.FileName);
+                    handler?.Invoke(this, args);
+                }
             }
         }
     }

@@ -69,5 +69,15 @@ namespace TutorialsArchiv
                 Map(m => m.Tags).Index(4);
             }
         }
+
+        public void Copy(string newFileNameAndPath)
+        {
+            if (File.Exists(newFileNameAndPath))
+            {
+                File.Delete(newFileNameAndPath);
+            }
+
+            File.Copy(_fileName, newFileNameAndPath);
+        }
     }
 }
