@@ -52,7 +52,7 @@
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.detailsGroupBox = new System.Windows.Forms.GroupBox();
             this.detailsEditPanel = new System.Windows.Forms.Panel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.resourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createResourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.detailsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +63,7 @@
             this.tagsContextMenuStrip.SuspendLayout();
             this.detailsGroupBox.SuspendLayout();
             this.detailsEditPanel.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // urlLabel
@@ -311,16 +311,16 @@
             this.detailsEditPanel.Size = new System.Drawing.Size(381, 228);
             this.detailsEditPanel.TabIndex = 0;
             // 
-            // menuStrip1
+            // mainMenuStrip
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.resourceMenuItem,
             this.detailsMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(707, 24);
-            this.menuStrip1.TabIndex = 10;
-            this.menuStrip1.Text = "mainMenuStrip";
+            this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.mainMenuStrip.Name = "mainMenuStrip";
+            this.mainMenuStrip.Size = new System.Drawing.Size(707, 24);
+            this.mainMenuStrip.TabIndex = 10;
+            this.mainMenuStrip.Text = "mainMenuStrip";
             // 
             // resourceMenuItem
             // 
@@ -358,12 +358,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(707, 392);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.mainMenuStrip);
             this.Controls.Add(this.detailsGroupBox);
             this.Controls.Add(this.createButton);
             this.Controls.Add(this.teachingResourcesDGV);
             this.Controls.Add(this.emptyDgvLabel);
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "MainForm";
             this.Text = "Lernmaterial Finder";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
@@ -375,8 +375,8 @@
             this.detailsGroupBox.ResumeLayout(false);
             this.detailsEditPanel.ResumeLayout(false);
             this.detailsEditPanel.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.mainMenuStrip.ResumeLayout(false);
+            this.mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,7 +407,7 @@
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.GroupBox detailsGroupBox;
         private System.Windows.Forms.Panel detailsEditPanel;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem resourceMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createResourceMenuItem;
         private System.Windows.Forms.ToolStripMenuItem detailsMenuItem;
