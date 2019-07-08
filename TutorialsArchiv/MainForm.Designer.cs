@@ -56,6 +56,8 @@
             this.editMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createResourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createTagMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportDataMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resourceEntryErrorProvider)).BeginInit();
             this.targetAudienceGroupBox.SuspendLayout();
@@ -313,6 +315,7 @@
             // mainMenuStrip
             // 
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dateiToolStripMenuItem,
             this.editMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
@@ -342,6 +345,21 @@
             this.createTagMenuItem.Size = new System.Drawing.Size(185, 22);
             this.createTagMenuItem.Text = "Tag hinzufügen";
             this.createTagMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
+            // 
+            // dateiToolStripMenuItem
+            // 
+            this.dateiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportDataMenuItem});
+            this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
+            this.dateiToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.dateiToolStripMenuItem.Text = "Datei";
+            // 
+            // exportDataMenuItem
+            // 
+            this.exportDataMenuItem.Name = "exportDataMenuItem";
+            this.exportDataMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exportDataMenuItem.Text = "Daten exportieren";
+            this.exportDataMenuItem.Click += new System.EventHandler(this.ExportDataMenuItem_Click);
             // 
             // MainForm
             // 
@@ -402,6 +420,8 @@
         private System.Windows.Forms.ToolStripMenuItem editMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createResourceMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createTagMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dateiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportDataMenuItem;
     }
 }
 

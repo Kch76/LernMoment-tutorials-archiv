@@ -60,6 +60,7 @@ namespace TutorialsArchiv
 
             createButton.Enabled = true;
             createResourceMenuItem.Enabled = true;
+            exportDataMenuItem.Enabled = false;
 
             DisableEntryControls();
 
@@ -91,6 +92,7 @@ namespace TutorialsArchiv
 
             createButton.Enabled = true;
             createResourceMenuItem.Enabled = true;
+            exportDataMenuItem.Enabled = true;
 
             DisableEntryControls();
 
@@ -115,6 +117,7 @@ namespace TutorialsArchiv
         {
             createButton.Enabled = false;
             createResourceMenuItem.Enabled = false;
+            exportDataMenuItem.Enabled = false;
 
             deleteButton.Enabled = false;
             cancelButton.Enabled = true;
@@ -128,6 +131,7 @@ namespace TutorialsArchiv
         {
             createButton.Enabled = false;
             createResourceMenuItem.Enabled = false;
+            exportDataMenuItem.Enabled = false;
 
             deleteButton.Enabled = false;
             cancelButton.Enabled = true;
@@ -415,6 +419,25 @@ namespace TutorialsArchiv
             if (tagsCheckedListBox.SelectedItems.Count > 0)
             {
                 RaiseEventWithEmptyArgs(ResourceEdited);
+            }
+        }
+
+        private void ExportDataMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "CSV|*.csv";
+            saveDialog.Title = "daten exportieren";
+            DialogResult result = saveDialog.ShowDialog();
+            
+            // If the file name is not an empty string open it for saving.  
+            if (result == DialogResult.OK && saveDialog.FileName != "")
+            {
+                if (File.Exists(saveDialog.FileName))
+                {
+                    File.Delete(saveDialog.FileName);
+                }
+
+                File.Copy("file-database.csv", saveDialog.FileName);
             }
         }
     }
