@@ -53,9 +53,8 @@
             this.detailsGroupBox = new System.Windows.Forms.GroupBox();
             this.detailsEditPanel = new System.Windows.Forms.Panel();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
-            this.resourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createResourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.detailsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createTagMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resourceEntryErrorProvider)).BeginInit();
@@ -314,41 +313,33 @@
             // mainMenuStrip
             // 
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.resourceMenuItem,
-            this.detailsMenuItem});
+            this.editMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Size = new System.Drawing.Size(707, 24);
             this.mainMenuStrip.TabIndex = 10;
             this.mainMenuStrip.Text = "mainMenuStrip";
             // 
-            // resourceMenuItem
+            // editMenuItem
             // 
-            this.resourceMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.createResourceMenuItem});
-            this.resourceMenuItem.Name = "resourceMenuItem";
-            this.resourceMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.resourceMenuItem.Text = "Quelle";
+            this.editMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createResourceMenuItem,
+            this.createTagMenuItem});
+            this.editMenuItem.Name = "editMenuItem";
+            this.editMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.editMenuItem.Text = "Bearbeiten";
             // 
             // createResourceMenuItem
             // 
             this.createResourceMenuItem.Name = "createResourceMenuItem";
-            this.createResourceMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.createResourceMenuItem.Text = "Hinzufügen";
+            this.createResourceMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.createResourceMenuItem.Text = "Resource hinzufügen";
             this.createResourceMenuItem.Click += new System.EventHandler(this.CreateButton_Click);
-            // 
-            // detailsMenuItem
-            // 
-            this.detailsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.createTagMenuItem});
-            this.detailsMenuItem.Name = "detailsMenuItem";
-            this.detailsMenuItem.Size = new System.Drawing.Size(54, 20);
-            this.detailsMenuItem.Text = "Details";
             // 
             // createTagMenuItem
             // 
             this.createTagMenuItem.Name = "createTagMenuItem";
-            this.createTagMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createTagMenuItem.Size = new System.Drawing.Size(185, 22);
             this.createTagMenuItem.Text = "Tag hinzufügen";
             this.createTagMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
             // 
@@ -408,9 +399,8 @@
         private System.Windows.Forms.GroupBox detailsGroupBox;
         private System.Windows.Forms.Panel detailsEditPanel;
         private System.Windows.Forms.MenuStrip mainMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem resourceMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createResourceMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem detailsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createTagMenuItem;
     }
 }
