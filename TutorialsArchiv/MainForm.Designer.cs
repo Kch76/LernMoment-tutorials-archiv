@@ -58,6 +58,9 @@
             this.editMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createResourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createTagMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resourceEntryErrorProvider)).BeginInit();
             this.targetAudienceGroupBox.SuspendLayout();
@@ -65,6 +68,8 @@
             this.detailsGroupBox.SuspendLayout();
             this.detailsEditPanel.SuspendLayout();
             this.mainMenuStrip.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // urlLabel
@@ -107,7 +112,7 @@
             // 
             // createButton
             // 
-            this.createButton.Location = new System.Drawing.Point(12, 359);
+            this.createButton.Location = new System.Drawing.Point(16, 349);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(90, 23);
             this.createButton.TabIndex = 0;
@@ -131,7 +136,7 @@
             this.teachingResourcesDGV.AllowUserToDeleteRows = false;
             this.teachingResourcesDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.teachingResourcesDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.teachingResourcesDGV.Location = new System.Drawing.Point(12, 27);
+            this.teachingResourcesDGV.Location = new System.Drawing.Point(16, 17);
             this.teachingResourcesDGV.Name = "teachingResourcesDGV";
             this.teachingResourcesDGV.ReadOnly = true;
             this.teachingResourcesDGV.RowHeadersVisible = false;
@@ -167,7 +172,7 @@
             this.emptyDgvLabel.BackColor = System.Drawing.Color.Silver;
             this.emptyDgvLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.emptyDgvLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emptyDgvLabel.Location = new System.Drawing.Point(62, 119);
+            this.emptyDgvLabel.Location = new System.Drawing.Point(34, 21);
             this.emptyDgvLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.emptyDgvLabel.Name = "emptyDgvLabel";
             this.emptyDgvLabel.Size = new System.Drawing.Size(148, 97);
@@ -289,7 +294,7 @@
             this.detailsGroupBox.Controls.Add(this.deleteButton);
             this.detailsGroupBox.Controls.Add(this.updateButton);
             this.detailsGroupBox.Controls.Add(this.cancelButton);
-            this.detailsGroupBox.Location = new System.Drawing.Point(304, 27);
+            this.detailsGroupBox.Location = new System.Drawing.Point(308, 17);
             this.detailsGroupBox.Name = "detailsGroupBox";
             this.detailsGroupBox.Size = new System.Drawing.Size(393, 318);
             this.detailsGroupBox.TabIndex = 1;
@@ -319,7 +324,7 @@
             this.editMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(707, 24);
+            this.mainMenuStrip.Size = new System.Drawing.Size(761, 24);
             this.mainMenuStrip.TabIndex = 10;
             this.mainMenuStrip.Text = "mainMenuStrip";
             // 
@@ -361,17 +366,48 @@
             this.createTagMenuItem.Text = "Tag hinzufügen";
             this.createTagMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 28);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(737, 409);
+            this.tabControl1.TabIndex = 11;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.detailsGroupBox);
+            this.tabPage1.Controls.Add(this.teachingResourcesDGV);
+            this.tabPage1.Controls.Add(this.createButton);
+            this.tabPage1.Controls.Add(this.emptyDgvLabel);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(729, 383);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(192, 74);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(707, 392);
+            this.ClientSize = new System.Drawing.Size(761, 451);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.mainMenuStrip);
-            this.Controls.Add(this.detailsGroupBox);
-            this.Controls.Add(this.createButton);
-            this.Controls.Add(this.teachingResourcesDGV);
-            this.Controls.Add(this.emptyDgvLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.mainMenuStrip;
             this.MaximizeBox = false;
@@ -388,6 +424,8 @@
             this.detailsEditPanel.PerformLayout();
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -424,6 +462,9 @@
         private System.Windows.Forms.ToolStripMenuItem createTagMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dateiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportDataMenuItem;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
 
