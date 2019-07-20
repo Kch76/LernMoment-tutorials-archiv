@@ -53,11 +53,11 @@
             this.detailsGroupBox = new System.Windows.Forms.GroupBox();
             this.detailsEditPanel = new System.Windows.Forms.Panel();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
+            this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportDataMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createResourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createTagMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dateiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportDataMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resourceEntryErrorProvider)).BeginInit();
             this.targetAudienceGroupBox.SuspendLayout();
@@ -323,6 +323,21 @@
             this.mainMenuStrip.TabIndex = 10;
             this.mainMenuStrip.Text = "mainMenuStrip";
             // 
+            // dateiToolStripMenuItem
+            // 
+            this.dateiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportDataMenuItem});
+            this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
+            this.dateiToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.dateiToolStripMenuItem.Text = "Datei";
+            // 
+            // exportDataMenuItem
+            // 
+            this.exportDataMenuItem.Name = "exportDataMenuItem";
+            this.exportDataMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.exportDataMenuItem.Text = "Daten exportieren";
+            this.exportDataMenuItem.Click += new System.EventHandler(this.ExportDataMenuItem_Click);
+            // 
             // editMenuItem
             // 
             this.editMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -346,21 +361,6 @@
             this.createTagMenuItem.Text = "Tag hinzufügen";
             this.createTagMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
             // 
-            // dateiToolStripMenuItem
-            // 
-            this.dateiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportDataMenuItem});
-            this.dateiToolStripMenuItem.Name = "dateiToolStripMenuItem";
-            this.dateiToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.dateiToolStripMenuItem.Text = "Datei";
-            // 
-            // exportDataMenuItem
-            // 
-            this.exportDataMenuItem.Name = "exportDataMenuItem";
-            this.exportDataMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exportDataMenuItem.Text = "Daten exportieren";
-            this.exportDataMenuItem.Click += new System.EventHandler(this.ExportDataMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,9 +372,11 @@
             this.Controls.Add(this.createButton);
             this.Controls.Add(this.teachingResourcesDGV);
             this.Controls.Add(this.emptyDgvLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.mainMenuStrip;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Lernmaterial Finder";
+            this.Text = "LernMoment Buddy";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resourceEntryErrorProvider)).EndInit();
