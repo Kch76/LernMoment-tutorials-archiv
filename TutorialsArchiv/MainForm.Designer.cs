@@ -58,9 +58,9 @@
             this.editMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createResourceMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createTagMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.viewsTabControl = new System.Windows.Forms.TabControl();
+            this.mainTabPage = new System.Windows.Forms.TabPage();
+            this.fileTabPage = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resourceEntryErrorProvider)).BeginInit();
             this.targetAudienceGroupBox.SuspendLayout();
@@ -68,8 +68,8 @@
             this.detailsGroupBox.SuspendLayout();
             this.detailsEditPanel.SuspendLayout();
             this.mainMenuStrip.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.viewsTabControl.SuspendLayout();
+            this.mainTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // urlLabel
@@ -366,39 +366,39 @@
             this.createTagMenuItem.Text = "Tag hinzufügen";
             this.createTagMenuItem.Click += new System.EventHandler(this.AddToolStripMenuItem_Click);
             // 
-            // tabControl1
+            // viewsTabControl
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 28);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(737, 409);
-            this.tabControl1.TabIndex = 11;
+            this.viewsTabControl.Controls.Add(this.mainTabPage);
+            this.viewsTabControl.Controls.Add(this.fileTabPage);
+            this.viewsTabControl.Location = new System.Drawing.Point(12, 28);
+            this.viewsTabControl.Name = "viewsTabControl";
+            this.viewsTabControl.SelectedIndex = 0;
+            this.viewsTabControl.Size = new System.Drawing.Size(737, 409);
+            this.viewsTabControl.TabIndex = 11;
             // 
-            // tabPage1
+            // mainTabPage
             // 
-            this.tabPage1.Controls.Add(this.detailsGroupBox);
-            this.tabPage1.Controls.Add(this.teachingResourcesDGV);
-            this.tabPage1.Controls.Add(this.createButton);
-            this.tabPage1.Controls.Add(this.emptyDgvLabel);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(729, 383);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.mainTabPage.Controls.Add(this.detailsGroupBox);
+            this.mainTabPage.Controls.Add(this.teachingResourcesDGV);
+            this.mainTabPage.Controls.Add(this.createButton);
+            this.mainTabPage.Controls.Add(this.emptyDgvLabel);
+            this.mainTabPage.Location = new System.Drawing.Point(4, 22);
+            this.mainTabPage.Name = "mainTabPage";
+            this.mainTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.mainTabPage.Size = new System.Drawing.Size(729, 383);
+            this.mainTabPage.TabIndex = 0;
+            this.mainTabPage.Text = "Eingabe";
+            this.mainTabPage.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // fileTabPage
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 74);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.fileTabPage.Location = new System.Drawing.Point(4, 22);
+            this.fileTabPage.Name = "fileTabPage";
+            this.fileTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.fileTabPage.Size = new System.Drawing.Size(729, 383);
+            this.fileTabPage.TabIndex = 1;
+            this.fileTabPage.Text = "Datei";
+            this.fileTabPage.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -406,7 +406,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(761, 451);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.viewsTabControl);
             this.Controls.Add(this.mainMenuStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.mainMenuStrip;
@@ -424,8 +424,8 @@
             this.detailsEditPanel.PerformLayout();
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.viewsTabControl.ResumeLayout(false);
+            this.mainTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -462,9 +462,9 @@
         private System.Windows.Forms.ToolStripMenuItem createTagMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dateiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportDataMenuItem;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabControl viewsTabControl;
+        private System.Windows.Forms.TabPage mainTabPage;
+        private System.Windows.Forms.TabPage fileTabPage;
     }
 }
 
