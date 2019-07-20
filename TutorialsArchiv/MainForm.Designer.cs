@@ -61,6 +61,7 @@
             this.viewsTabControl = new System.Windows.Forms.TabControl();
             this.mainTabPage = new System.Windows.Forms.TabPage();
             this.fileTabPage = new System.Windows.Forms.TabPage();
+            this.fileContentListBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.teachingResourcesDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resourceEntryErrorProvider)).BeginInit();
             this.targetAudienceGroupBox.SuspendLayout();
@@ -70,6 +71,7 @@
             this.mainMenuStrip.SuspendLayout();
             this.viewsTabControl.SuspendLayout();
             this.mainTabPage.SuspendLayout();
+            this.fileTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // urlLabel
@@ -392,6 +394,7 @@
             // 
             // fileTabPage
             // 
+            this.fileTabPage.Controls.Add(this.fileContentListBox);
             this.fileTabPage.Location = new System.Drawing.Point(4, 22);
             this.fileTabPage.Name = "fileTabPage";
             this.fileTabPage.Padding = new System.Windows.Forms.Padding(3);
@@ -399,6 +402,15 @@
             this.fileTabPage.TabIndex = 1;
             this.fileTabPage.Text = "Datei";
             this.fileTabPage.UseVisualStyleBackColor = true;
+            this.fileTabPage.Enter += new System.EventHandler(this.FileTabPage_Enter);
+            // 
+            // fileContentListBox
+            // 
+            this.fileContentListBox.FormattingEnabled = true;
+            this.fileContentListBox.Location = new System.Drawing.Point(6, 7);
+            this.fileContentListBox.Name = "fileContentListBox";
+            this.fileContentListBox.Size = new System.Drawing.Size(717, 368);
+            this.fileContentListBox.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -426,6 +438,7 @@
             this.mainMenuStrip.PerformLayout();
             this.viewsTabControl.ResumeLayout(false);
             this.mainTabPage.ResumeLayout(false);
+            this.fileTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -465,6 +478,7 @@
         private System.Windows.Forms.TabControl viewsTabControl;
         private System.Windows.Forms.TabPage mainTabPage;
         private System.Windows.Forms.TabPage fileTabPage;
+        private System.Windows.Forms.ListBox fileContentListBox;
     }
 }
 

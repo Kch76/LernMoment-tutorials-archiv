@@ -442,5 +442,12 @@ namespace TutorialsArchiv
                 }
             }
         }
+
+        private void FileTabPage_Enter(object sender, EventArgs e)
+        {
+            var linesInFile = File.ReadAllLines("file-database.csv");
+            fileContentListBox.Items.Clear();
+            fileContentListBox.Items.AddRange(linesInFile);
+        }
     }
 }
